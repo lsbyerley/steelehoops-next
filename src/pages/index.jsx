@@ -6,7 +6,7 @@ import { isValid, format, parseISO, parse } from 'date-fns';
 import Placeholders from '../components/Placeholders';
 import GameModule from '../components/GameModule';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+// const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
 const wait = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -34,7 +34,7 @@ const Home = () => {
       if (date === 'usetest') {
         gamesRes = await import(`../data/games-test-res.json`);
       } else {
-        gamesRes = await axios.get(`${SITE_URL}/api/games?date=${date}`);
+        gamesRes = await axios.get(`/api/games?date=${date}`);
       }
 
       await wait(1000);
