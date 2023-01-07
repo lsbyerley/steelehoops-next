@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { isValid, format, parseISO, parse } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import Placeholders from '../components/Placeholders';
 import GameModule from '../components/GameModule';
 
@@ -16,13 +17,25 @@ const Home = () => {
   const [isLoading, setLoading] = useState(false);
 
   const gameDateShort = gamesData?.date
-    ? format(parseISO(gamesData?.date || ''), 'MMM d, yyyy')
+    ? formatInTimeZone(
+        parseISO(gamesData?.date || ''),
+        'America/New_York',
+        'MMM d, yyyy'
+      )
     : '-';
   const gameDateLong = gamesData?.date
-    ? format(parseISO(gamesData.date), 'MMMM d, yyyy')
+    ? formatInTimeZone(
+        parseISO(gamesData.date),
+        'America/New_York',
+        'MMMM d, yyyy'
+      )
     : '-';
   const gameDateDay = gamesData?.date
-    ? format(parseISO(gamesData?.date || ''), 'EEEE')
+    ? formatInTimeZone(
+        parseISO(gamesData?.date || ''),
+        'America/New_York',
+        'EEEE'
+      )
     : '-';
 
   const fetchGames = async (date) => {
@@ -94,17 +107,15 @@ const Home = () => {
         </header>
         <div className='grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3'>
           {isLoading && <Placeholders number={9} />}
-          {gamesData?.htGames?.map((g) => {
-            return (
-              <div key={g.id} className='grid-item'>
-                <GameModule
-                  game={g}
-                  halftimeGame={true}
-                  halftimeBet={g.halftimeAction === 'yes-bet'}
-                />
-              </div>
-            );
-          })}
+          {gamesData?.htGames
+            ?.filter((g) => g.halftimeAction === 'yes-bet')
+            .map((g) => {
+              return (
+                <div key={g.id} className='grid-item'>
+                  <GameModule game={g} halftimeGame={true} halftimeBet={true} />
+                </div>
+              );
+            })}
           {gamesData?.games?.map((g) => {
             return <GameModule key={g.id} game={g} />;
           })}
