@@ -15,7 +15,18 @@ const shLine = (game) => {
   }
 };
 
-const GameModule = ({ game }) => {
+const HalftimeTip = ({ game }) => {
+  const htBet = `Surplus Threes: ${game[game.surplusTeam].abbrev}: ${
+    game.surplusThreeDiff
+  }`;
+  return (
+    <div className='block gap-2 mx-auto mt-2 badge badge-success badge-outline'>
+      {htBet}
+    </div>
+  );
+};
+
+const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
   return (
     <div
       key={game.id}
@@ -23,52 +34,68 @@ const GameModule = ({ game }) => {
     >
       <header className='flex items-center justify-between flex-none'>
         <div></div>
-        <div className='text-xs'>{game.startTime}</div>
+        <div className='text-xs'>
+          {!halftimeGame && <span>{game.startTime}</span>}
+          {halftimeGame && halftimeBet && <span>Halftime</span>}
+        </div>
       </header>
-      <div>
+      <div className='flex items-center justify-between'>
         <p className='font-medium truncate'>
+          <span className='mr-1 text-sm'>({game.away.kenPom?.rank})</span>
           <span>{game.away.shortName}</span>
-          <span className='ml-2 text-sm'>({game.away.kenPom?.rank})</span>
+        </p>
+        <p
+          className={clsx('', halftimeGame && halftimeBet ? 'block' : 'hidden')}
+        >
+          {game.away.score}
         </p>
       </div>
-      <div>
+      <div className='flex items-center justify-between'>
         <p className='font-medium truncate'>
+          <span className='mr-1 text-sm'>({game.home.kenPom?.rank})</span>
           <span>{game.home.shortName}</span>
-          <span className='ml-2 text-sm'>({game.home.kenPom?.rank})</span>
+        </p>
+        <p
+          className={clsx('', halftimeGame && halftimeBet ? 'block' : 'hidden')}
+        >
+          {game.home.score}
         </p>
       </div>
-      <table className='table w-full mt-2 table-compact'>
-        <thead>
-          <tr>
-            <th>VTotal</th>
-            <th>SHTotal</th>
-            <th>VLine</th>
-            <th>SHLine</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{game.odds.vegasTotal}</td>
-            <td
-              className={clsx(
-                'relative',
-                game.totalDiff >= 3 ? 'text-green-600 font-bold' : ''
-              )}
-            >
-              {game.prediction?.total}
-            </td>
-            <td>{game.odds?.vegasLine}</td>
-            <td
-              className={clsx(
-                'relative',
-                game.lineDiff >= 3 ? 'text-green-600 font-bold' : ''
-              )}
-            >
-              {shLine(game)}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      {halftimeGame && halftimeBet && <HalftimeTip game={game} />}
+      {!halftimeGame && (
+        <table className='table w-full mt-2 table-compact'>
+          <thead>
+            <tr>
+              <th>VTotal</th>
+              <th>SHTotal</th>
+              <th>VLine</th>
+              <th>SHLine</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{game.odds.vegasTotal}</td>
+              <td
+                className={clsx(
+                  'relative',
+                  game.totalDiff >= 3 ? 'text-green-600 font-bold' : ''
+                )}
+              >
+                {game.prediction?.total}
+              </td>
+              <td>{game.odds?.vegasLine}</td>
+              <td
+                className={clsx(
+                  'relative',
+                  game.lineDiff >= 3 ? 'text-green-600 font-bold' : ''
+                )}
+              >
+                {shLine(game)}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

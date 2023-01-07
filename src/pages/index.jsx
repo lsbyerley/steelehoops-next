@@ -94,6 +94,17 @@ const Home = () => {
         </header>
         <div className='grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3'>
           {isLoading && <Placeholders number={9} />}
+          {gamesData?.htGames?.map((g) => {
+            return (
+              <div key={g.id} className='grid-item'>
+                <GameModule
+                  game={g}
+                  halftimeGame={true}
+                  halftimeBet={g.halftimeAction === 'yes-bet'}
+                />
+              </div>
+            );
+          })}
           {gamesData?.games?.map((g) => {
             return <GameModule key={g.id} game={g} />;
           })}
