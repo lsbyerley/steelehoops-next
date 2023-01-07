@@ -35,7 +35,7 @@ const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
       <header className='flex items-center justify-between flex-none'>
         <div></div>
         <div className='text-xs'>
-          {!halftimeGame && <span>{game.startTime}</span>}
+          {!halftimeGame && <span>{game.startTime} EST</span>}
           {halftimeGame && halftimeBet && <span>Halftime</span>}
         </div>
       </header>

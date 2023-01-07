@@ -1,4 +1,5 @@
 import { isValid, format, parse, parseISO } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import axios from 'axios';
 import get from 'just-safe-get';
 import round from 'lodash.round';
@@ -66,8 +67,9 @@ const getGames = async (paramDate) => {
 
     if (gamesData) {
       gamesData.forEach((game, i) => {
-        const startTime = format(
+        const startTime = formatInTimeZone(
           parseISO(get(game, 'competitions.0.date')),
+          'America/New_York',
           'h:mm a'
         );
         const teamOne = get(game, 'competitions.0.competitors.0');
