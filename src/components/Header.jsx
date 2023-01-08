@@ -1,0 +1,49 @@
+import { formatInTimeZone } from 'date-fns-tz';
+import { parseISO } from 'date-fns';
+
+const Header = ({ gamesData }) => {
+  const gameDateShort = gamesData?.date
+    ? formatInTimeZone(
+        parseISO(gamesData?.date || ''),
+        'America/New_York',
+        'MMM d, yyyy'
+      )
+    : '-';
+  const gameDateLong = gamesData?.date
+    ? formatInTimeZone(
+        parseISO(gamesData.date),
+        'America/New_York',
+        'MMMM d, yyyy'
+      )
+    : '-';
+  const gameDateDay = gamesData?.date
+    ? formatInTimeZone(
+        parseISO(gamesData?.date || ''),
+        'America/New_York',
+        'EEEE'
+      )
+    : '-';
+
+  return (
+    <header className='flex items-center justify-between flex-none px-6 py-4 border-b shadow-md'>
+      <div>
+        <h1 className='text-lg font-semibold leading-6'>
+          <time dateTime={gameDateShort} className='sm:hidden'>
+            {gameDateShort}
+          </time>
+          <time dateTime={gameDateLong} className='hidden sm:inline'>
+            {gameDateLong}
+          </time>
+        </h1>
+        <p className='mt-1 text-sm'>{gameDateDay}</p>
+      </div>
+      <div className='flex items-center'>
+        <div className='font-bold'>SH</div>
+        <div className='w-px h-6 ml-6 bg-gray-300'></div>
+        <div className='ml-6'>toggle</div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

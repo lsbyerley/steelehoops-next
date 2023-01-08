@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { isValid, format, parseISO, parse } from 'date-fns';
-import { formatInTimeZone } from 'date-fns-tz';
+import { isValid, format, parse } from 'date-fns';
 import Placeholders from '../components/Placeholders';
 import GameModule from '../components/GameModule';
+import Header from '../components/Header';
 
 // const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
@@ -15,28 +15,6 @@ const Home = () => {
   const { query, isReady } = useRouter();
   const [gamesData, setGamesData] = useState(null);
   const [isLoading, setLoading] = useState(false);
-
-  const gameDateShort = gamesData?.date
-    ? formatInTimeZone(
-        parseISO(gamesData?.date || ''),
-        'America/New_York',
-        'MMM d, yyyy'
-      )
-    : '-';
-  const gameDateLong = gamesData?.date
-    ? formatInTimeZone(
-        parseISO(gamesData.date),
-        'America/New_York',
-        'MMMM d, yyyy'
-      )
-    : '-';
-  const gameDateDay = gamesData?.date
-    ? formatInTimeZone(
-        parseISO(gamesData?.date || ''),
-        'America/New_York',
-        'EEEE'
-      )
-    : '-';
 
   const fetchGames = async (date) => {
     setLoading(false);
@@ -87,24 +65,7 @@ const Home = () => {
         />
       </Head>
       <div>
-        <header className='flex items-center justify-between flex-none px-6 py-4 border-b shadow-md'>
-          <div>
-            <h1 className='text-lg font-semibold leading-6'>
-              <time dateTime={gameDateShort} className='sm:hidden'>
-                {gameDateShort}
-              </time>
-              <time dateTime={gameDateLong} className='hidden sm:inline'>
-                {gameDateLong}
-              </time>
-            </h1>
-            <p className='mt-1 text-sm'>{gameDateDay}</p>
-          </div>
-          <div className='flex items-center'>
-            <div className='font-bold'>SH</div>
-            <div className='w-px h-6 ml-6 bg-gray-300'></div>
-            <div className='ml-6'>toggle</div>
-          </div>
-        </header>
+        <Header gamesData={gamesData} />
         <div className='grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3'>
           {isLoading && <Placeholders number={9} />}
           {gamesData?.htGames
@@ -119,11 +80,12 @@ const Home = () => {
           {gamesData?.games?.map((g) => {
             return <GameModule key={g.id} game={g} />;
           })}
-          {!isLoading && !gamesData?.games && (
-            <div>
-              <p className='mt-1 text-sm'>No games :(</p>
-            </div>
-          )}
+          {!isLoading &&
+            (!gamesData?.games.length || !gamesData?.htGames.length) && (
+              <div>
+                <p className='mt-1 text-sm'>No games :(</p>
+              </div>
+            )}
         </div>
       </div>
     </>

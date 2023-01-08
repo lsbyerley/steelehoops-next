@@ -20,20 +20,36 @@ const HalftimeTip = ({ game }) => {
     game.surplusThreeDiff
   }`;
   return (
-    <div className='block gap-2 mx-auto mt-2 badge badge-success badge-outline'>
+    <div className='block gap-2 mx-auto mt-2 badge badge-accent badge-outline badge-md'>
       {htBet}
     </div>
   );
 };
 
 const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
+  const gameLink = `https://www.espn.com/mens-college-basketball/game/_/gameId/${game.id}`;
+
   return (
     <div
       key={game.id}
-      className='w-full p-4 bg-white rounded-lg shadow-md ring-1 ring-slate-900/5 dark:bg-slate-800'
+      className={clsx(
+        'w-full p-4 rounded-lg bg-base-100',
+        game.totalDiff >= 3 || game.lineDiff >= 3
+          ? 'shadow-md ring-2 ring-accent/50'
+          : 'shadow-md ring-1 ring-base-content/5'
+      )}
     >
-      <header className='flex items-center justify-between flex-none'>
-        <div></div>
+      <header className='flex items-center justify-between flex-none mb-2'>
+        <div className='text-xs'>
+          <a
+            className='link link-hover'
+            href={gameLink}
+            target='_blank'
+            rel='noreferrer'
+          >
+            Gamecast
+          </a>
+        </div>
         <div className='text-xs'>
           {!halftimeGame && <span>{game.startTime} EST</span>}
           {halftimeGame && halftimeBet && <span>Halftime</span>}
@@ -78,7 +94,7 @@ const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
               <td
                 className={clsx(
                   'relative',
-                  game.totalDiff >= 3 ? 'text-green-600 font-bold' : ''
+                  game.totalDiff >= 3 ? 'text-accent font-bold' : ''
                 )}
               >
                 {game.prediction?.total}
@@ -87,7 +103,7 @@ const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
               <td
                 className={clsx(
                   'relative',
-                  game.lineDiff >= 3 ? 'text-green-600 font-bold' : ''
+                  game.lineDiff >= 3 ? 'text-accent font-bold' : ''
                 )}
               >
                 {shLine(game)}

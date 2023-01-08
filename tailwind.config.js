@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,4 +11,20 @@ module.exports = {
     extend: {},
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require('daisyui/src/colors/themes')['[data-theme=light]'],
+          accent: colors.emerald[500],
+        },
+      },
+      {
+        dark: {
+          ...require('daisyui/src/colors/themes')['[data-theme=dark]'],
+          accent: colors.emerald[300],
+        },
+      },
+    ],
+  },
 };
