@@ -34,7 +34,7 @@ const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
       key={game.id}
       className={clsx(
         'w-full p-4 rounded-lg bg-base-100',
-        game.totalDiff >= 3 || game.lineDiff >= 3
+        game.totalDiff >= 3 || game.lineDiff >= 3 || halftimeBet
           ? 'shadow-md ring-2 ring-accent/50'
           : 'shadow-md ring-1 ring-base-content/5'
       )}

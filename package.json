@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@heroicons/react": "2.0.13",
     "axios": "1.2.1",
     "cheerio": "1.0.0-rc.12",
     "cloudscraper": "4.6.0",

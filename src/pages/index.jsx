@@ -65,7 +65,7 @@ const Home = () => {
         />
       </Head>
       <div>
-        <Header gamesData={gamesData} />
+        <Header gamesData={gamesData} gamesLoading={isLoading} />
         <div className='grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3'>
           {isLoading && <Placeholders number={9} />}
           {gamesData?.htGames
