@@ -29,7 +29,7 @@ const getStats = async () => {
 
 async function scrape() {
   const url =
-    'https://www.sports-reference.com/cbb/seasons/2022-school-stats.html';
+    'https://www.sports-reference.com/cbb/seasons/2023-school-stats.html';
   const statsRes = await axios.get(url);
 
   const $ = cheerio.load(statsRes.data, { normalizeWhitespace: true });
