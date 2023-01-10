@@ -1,79 +1,31 @@
-import dayjs from 'dayjs';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-// const dynamodb = require('../utils/dynamodb');
-const expireThreshold = 0; // 2hours
+import { Redis } from '@upstash/redis';
 
-// TZ is aws lambda reserved env variable
-const { TZ } = process.env;
-
-let date = dayjs();
-if (TZ === ':UTC') {
-  date = date.subtract(5, 'hour'); // UTC offset -5 hours for EST
-}
+const redis = new Redis({
+  url: process.env.UPSTASH_URL,
+  token: process.env.UPSTASH_TOKEN,
+});
 
 const getStats = async () => {
-  try {
-    let stats = {};
-    let statsFromDb = false;
-    let minutesOld = 0;
-    const statsKey = `Stats-${date.format('YYYYMMDD')}`;
-    const getItemParams = {
-      TableName: 'SteeleHoops',
-      Key: { KEY: statsKey },
+  let cache = await redis.get('stats-cache');
+  //cache = JSON.parse(cache);
+
+  if (cache) {
+    return {
+      type: 'redis',
+      ...cache,
     };
-    // const dbItem = await dynamodb.get(getItemParams).promise();
-    const dbItem = {};
-
-    // if we dont have any stats data for the KEY (aka date slug) get some
-    if (!dbItem.Item) {
-      stats = await scrape();
-      // await updateStatsInDB(statsKey, stats);
-    } else {
-      // if we do have stats and they are older than the expire threshold, get fresh ones
-      // else use the ones in the db
-
-      const updatedAt = dayjs(dbItem.Item.UPDATED_AT);
-      minutesOld = dayjs().diff(updatedAt, 'minute');
-
-      if (Math.abs(minutesOld) > expireThreshold) {
-        minutesOld = 0;
-        stats = await scrape();
-        // await updateStatsInDB(statsKey, stats);
-      } else {
-        statsFromDb = true;
-        stats = dbItem.Item.JSON_DATA;
-      }
-    }
+  } else {
+    let stats = await scrape();
+    redis.set('stats-cache', JSON.stringify(stats), { EX: 3600 });
 
     return {
-      error: false,
-      minutesOld,
-      statsFromDb,
-      statsKey,
+      type: 'api',
       ...stats,
-    };
-  } catch (err) {
-    console.error(err);
-    return {
-      error: true,
-      errorNote: err.message || 'no error message',
     };
   }
 };
-
-async function updateStatsInDB(statsKey, stats) {
-  const updateItemParams = {
-    TableName: 'SteeleHoops',
-    Key: { KEY: statsKey },
-    UpdateExpression: 'set JSON_DATA = :jd, UPDATED_AT = :ua',
-    ExpressionAttributeValues: {
-      ':jd': stats,
-      ':ua': date.format('M/D/YYYY h:mm a'),
-    },
-  };
-  return await dynamodb.update(updateItemParams).promise();
-}
 
 async function scrape() {
   const url =

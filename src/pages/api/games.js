@@ -12,8 +12,8 @@ const handler = async (req, res) => {
   switch (method) {
     case 'GET':
       const date = req.query?.date;
-      const data = await getGames(date);
-      res.send(data);
+      const games = await getGames(date);
+      res.send(games);
       break;
     default:
       res.setHeader('Allow', ['GET']);

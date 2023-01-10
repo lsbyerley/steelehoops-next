@@ -31,11 +31,9 @@ const getGames = async (paramDate) => {
     let areAnyGamesLive = false;
     if (paramDate === 'usetest') {
       useTestGames = true;
-    } else {
+    } else if (paramDate && isValid(parse(paramDate, 'yyyyMMdd', new Date()))) {
       gamesDate = paramDate;
     }
-
-    console.log('paramDate', paramDate.length === 8, isValid(paramDate));
 
     const apiBase =
       'http://site.web.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard';

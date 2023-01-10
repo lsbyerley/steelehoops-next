@@ -6,7 +6,7 @@ const handler = async (req, res) => {
   switch (method) {
     case 'GET':
       const stats = await getStats();
-      res.send({ stats });
+      res.send(stats);
       break;
     default:
       res.setHeader('Allow', ['GET']);

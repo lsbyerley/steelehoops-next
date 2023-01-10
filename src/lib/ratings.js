@@ -1,58 +1,31 @@
-import dayjs from 'dayjs';
-// import axios from 'axios';
 import * as cheerio from 'cheerio';
 import cloudscraper from 'cloudscraper';
-// const dynamodb = require('../utils/dynamodb');
-const expireThreshold = 0; // 2hours
+import { Redis } from '@upstash/redis';
 
-// TZ is aws lambda reserved env variable
-const { TZ } = process.env;
-
-let date = dayjs();
-if (TZ === ':UTC') {
-  date = date.subtract(5, 'hour'); // UTC offset -5 hours for EST
-}
+const redis = new Redis({
+  url: process.env.UPSTASH_URL,
+  token: process.env.UPSTASH_TOKEN,
+});
 
 const getRatings = async () => {
-  try {
-    let ratingsFromDb = false;
-    let minutesOld = 0;
-    const ratingsKey = `Ratings-${date.format('YYYYMMDD')}`;
-    const getItemParams = {
-      TableName: 'SteeleHoops',
-      Key: { KEY: ratingsKey },
-    };
+  let cache = await redis.get('ratings-cache');
+  //cache = JSON.parse(cache);
 
+  if (cache) {
+    return {
+      type: 'redis',
+      ...cache,
+    };
+  } else {
     let ratings = await scrape();
+    redis.set('ratings-cache', JSON.stringify(ratings), { EX: 3600 });
 
     return {
-      error: false,
-      minutesOld,
-      ratingsFromDb,
-      ratingsKey,
+      type: 'api',
       ...ratings,
-    };
-  } catch (err) {
-    console.error(err);
-    return {
-      error: true,
-      errorNote: err.message || 'no error message',
     };
   }
 };
-
-async function updateRatingsInDB(ratingsKey, ratings) {
-  const updateItemParams = {
-    TableName: 'SteeleHoops',
-    Key: { KEY: ratingsKey },
-    UpdateExpression: 'set JSON_DATA = :jd, UPDATED_AT = :ua',
-    ExpressionAttributeValues: {
-      ':jd': ratings,
-      ':ua': date.format('M/D/YYYY h:mm a'),
-    },
-  };
-  return await dynamodb.update(updateItemParams).promise();
-}
 
 async function scrape() {
   const options = {
