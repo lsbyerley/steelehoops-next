@@ -4,10 +4,10 @@ import getGames from '../../lib/games';
 const handler = async (req, res) => {
   const { method } = req;
 
-  res.setHeader(
+  /* res.setHeader(
     'Cache-Control',
     'public, s-maxage=60, stale-while-revalidate=599'
-  );
+  ); */
 
   switch (method) {
     case 'GET':
