@@ -2,6 +2,9 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { Redis } from '@upstash/redis';
 
+// 12 hour cache
+const CACHE_IN_SECONDS = 43200;
+
 const redis = new Redis({
   url: process.env.UPSTASH_URL,
   token: process.env.UPSTASH_TOKEN,
@@ -18,7 +21,7 @@ const getStats = async () => {
     };
   } else {
     let stats = await scrape();
-    redis.set('stats-cache', JSON.stringify(stats), { EX: 3600 });
+    redis.set('stats-cache', JSON.stringify(stats), { ex: CACHE_IN_SECONDS });
 
     return {
       type: 'api',
