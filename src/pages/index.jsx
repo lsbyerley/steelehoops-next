@@ -81,8 +81,8 @@ const Home = () => {
             return <GameModule key={g.id} game={g} />;
           })}
           {!isLoading &&
-            !gamesData?.games.length &&
-            !gamesData?.htGames.length && (
+            !gamesData?.games?.length &&
+            !gamesData?.htGames?.length && (
               <div>
                 <p className='mt-1 text-sm'>No games :(</p>
               </div>
