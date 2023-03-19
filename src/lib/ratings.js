@@ -1,33 +1,9 @@
 import * as cheerio from 'cheerio';
 import cloudscraper from 'cloudscraper';
-import { Redis } from '@upstash/redis';
-
-// 1 hour cache
-const CACHE_IN_SECONDS = 3600;
-
-const redis = new Redis({
-  url: process.env.UPSTASH_URL,
-  token: process.env.UPSTASH_TOKEN,
-});
 
 const getRatings = async () => {
-  let cache = await redis.get('ratings-cache');
-  //cache = JSON.parse(cache);
-
-  if (cache) {
-    return {
-      type: 'redis',
-      ...cache,
-    };
-  } else {
-    let ratings = await scrape();
-    redis.set('ratings-cache', JSON.stringify(ratings), { ex: CACHE_IN_SECONDS });
-
-    return {
-      type: 'api',
-      ...ratings,
-    };
-  }
+  const ratings = await scrape();
+  return ratings;
 };
 
 async function scrape() {
