@@ -7,7 +7,7 @@ import Placeholders from '../components/Placeholders';
 import GameModule from '../components/GameModule';
 import Header from '../components/Header';
 
-// const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+const defaultDate = format(new Date(), 'yyyyMMdd');
 
 const wait = (ms) => new Promise((res) => setTimeout(res, ms));
 
@@ -17,7 +17,6 @@ const Home = () => {
   const [isLoading, setLoading] = useState(false);
 
   const fetchGames = async (date) => {
-    setLoading(false);
     try {
       setLoading(true);
 
@@ -41,7 +40,6 @@ const Home = () => {
   useEffect(() => {
     if (isReady) {
       const queryDate = query?.date;
-      const defaultDate = format(new Date(), 'yyyyMMdd');
 
       const gameDate =
         queryDate === 'usetest'

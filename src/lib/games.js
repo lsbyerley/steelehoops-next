@@ -19,7 +19,7 @@ import normalizeTeam from './normalizeTeam';
 // when attaching seasontype, live stats are more up to date
 //----------------------------------------------------------------------------//
 
-const getGames = async (paramDate) => {
+const getGames = async (paramDate, teamRatings, teamStats) => {
   let useTestGames = false;
   let gamesData;
 
@@ -50,9 +50,14 @@ const getGames = async (paramDate) => {
       gamesData = get(gamesRes, 'data.events');
     }
 
-    // Perform these concurrently
-    const teamRatings = await getRatings();
-    const teamStats = await getStats();
+    // debug log
+    console.log(
+      `---- LOG: getGames ------
+      \rteamRatings type: ${teamRatings?.type}
+      \rteamStats type: ${teamStats?.type}
+      \rgames url: ${gamesUrl}
+      --------------------------`
+    );
 
     let games = [],
       inpostGames = [],
@@ -60,8 +65,6 @@ const getGames = async (paramDate) => {
       noOdds = [],
       nonMatches = [],
       confs = ['All'];
-
-    console.log('LOG: IN HERE', gamesUrl);
 
     if (gamesData) {
       gamesData.forEach((game, i) => {

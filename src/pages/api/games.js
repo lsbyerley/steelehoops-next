@@ -1,19 +1,41 @@
 // import { NextApiRequest, NextApiResponse } from 'next';
+import { Redis } from '@upstash/redis';
+import https from 'https';
+import axios from 'axios';
 import getGames from '../../lib/games';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
+// 2 minute cache
+const CACHE_IN_SECONDS = 120;
+
+// https://docs.upstash.com/redis/sdks/javascriptsdk/advanced#keepalive
+const redisClient = Redis.fromEnv({
+  agent: new https.Agent({ keepAlive: true }),
+});
 
 const handler = async (req, res) => {
   const { method } = req;
 
-  /* res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=599'
-  ); */
-
   switch (method) {
     case 'GET':
+      const { data: teamRatings } = await axios.get(`${siteUrl}/api/ratings`);
+      const { data: teamStats } = await axios.get(`${siteUrl}/api/stats`);
+
       const date = req.query?.date;
-      const games = await getGames(date);
-      res.send(games);
+      const cacheSlug = date ? `games-cache-${date}` : 'games-cache';
+
+      let cache = await redisClient.get(cacheSlug);
+      if (cache) {
+        return res.send({ type: 'redis', ...cache });
+      }
+
+      const games = await getGames(date, teamRatings, teamStats);
+      redisClient.set(cacheSlug, JSON.stringify(games), {
+        ex: CACHE_IN_SECONDS,
+      });
+      res.send({ type: 'api', ...games });
+
       break;
     default:
       res.setHeader('Allow', ['GET']);
