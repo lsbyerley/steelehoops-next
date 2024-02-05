@@ -3,7 +3,7 @@ import { parseISO } from 'date-fns';
 import { ArrowPathIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 
-const Header = ({ gamesData, gamesLoading = false }) => {
+const Header = ({ gamesData, gamesDate, gamesLoading = false, fetchGames }) => {
   const gameDateShort = gamesData?.date
     ? formatInTimeZone(
         parseISO(gamesData?.date || ''),
@@ -27,7 +27,7 @@ const Header = ({ gamesData, gamesLoading = false }) => {
     : '-';
 
   const refreshGames = () => {
-    console.log('LOG: refresh tbd');
+    fetchGames(gamesDate);
   };
 
   return (

@@ -14,7 +14,9 @@ const wait = (ms) => new Promise((res) => setTimeout(res, ms));
 const Home = () => {
   const { query, isReady } = useRouter();
   const [gamesData, setGamesData] = useState(null);
+  const [gamesDate, setGamesDate] = useState();
   const [isLoading, setLoading] = useState(false);
+  const hasHtGames = gamesData?.htGames?.filter((g) => g.halftimeAction === 'yes-bet')?.length > 0;
 
   const fetchGames = async (date) => {
     try {
@@ -24,7 +26,8 @@ const Home = () => {
       if (date === 'usetest') {
         gamesRes = await import(`../data/games-test-res.json`);
       } else {
-        gamesRes = await axios.get(`/api/games?date=${date}`);
+        let gamesUrl = date ? `/api/games?date=${date}` : '/api/games';
+        gamesRes = await axios.get(gamesUrl);
       }
 
       await wait(1000);
@@ -41,14 +44,15 @@ const Home = () => {
     if (isReady) {
       const queryDate = query?.date;
 
-      const gameDate =
+      const gamesDate =
         queryDate === 'usetest'
           ? queryDate
           : isValid(parse(queryDate, 'yyyyMMdd', new Date()))
           ? format(parse(queryDate, 'yyyyMMdd', new Date()), 'yyyyMMdd')
           : defaultDate;
 
-      fetchGames(gameDate);
+      setGamesDate(gamesDate);
+      fetchGames(gamesDate);
     }
   }, [isReady]);
 
@@ -63,7 +67,7 @@ const Home = () => {
         />
       </Head>
       <div>
-        <Header gamesData={gamesData} gamesLoading={isLoading} />
+        <Header gamesData={gamesData} gamesDate={gamesDate} gamesLoading={isLoading} fetchGames={fetchGames} />
         <div className='grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3'>
           {isLoading && <Placeholders number={9} />}
           {gamesData?.htGames
@@ -80,7 +84,7 @@ const Home = () => {
           })}
           {!isLoading &&
             !gamesData?.games?.length &&
-            !gamesData?.htGames?.length && (
+            !hasHtGames && (
               <div>
                 <p className='mt-1 text-sm'>No games :(</p>
               </div>
