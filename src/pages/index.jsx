@@ -42,14 +42,12 @@ const Home = () => {
 
   useEffect(() => {
     if (isReady) {
+      let gamesDate = defaultDate;
       const queryDate = query?.date;
-
-      const gamesDate =
-        queryDate === 'usetest'
-          ? queryDate
-          : isValid(parse(queryDate, 'yyyyMMdd', new Date()))
-          ? format(parse(queryDate, 'yyyyMMdd', new Date()), 'yyyyMMdd')
-          : defaultDate;
+      if (queryDate === 'usetest') gamesDate = queryDate;
+      if (queryDate && isValid(parse(queryDate, 'yyyyMMdd', new Date()))) {
+        gamesDate = format(parse(queryDate, 'yyyyMMdd', new Date()), 'yyyyMMdd')
+      }
 
       setGamesDate(gamesDate);
       fetchGames(gamesDate);
