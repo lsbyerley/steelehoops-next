@@ -22,15 +22,15 @@ async function scrapeSchedule(url) {
     const $ = cheerio.load(html);
 
     // Select the roster table
-    const gamesList = $('ul.sidearm-schedule-games-container');
+    const scheduleList = $('ul.sidearm-schedule-games-container');
 
     const scheduleRecord = $('div.sidearm-schedule-record');
 
     // Initialize an array to store player data
-    const games = [];
+    const schedule = [];
 
     // Iterate over each row (player) in the table
-    gamesList.find('li.sidearm-schedule-game').each((index, element) => {
+    scheduleList.find('li.sidearm-schedule-game').each((index, element) => {
       // Skip the header row
       // if (index !== 0) {
         // Extract player information from each row
@@ -43,12 +43,12 @@ async function scrapeSchedule(url) {
         const opponentLogo = $(element).find('div.sidearm-schedule-game-opponent-logo img').attr('data-src');
         
         // Create a player object and push it to the players array
-        games.push({ opponent, vsat, date, time, result, score, opponentLogo });
+        schedule.push({ opponent, vsat, date, time, result, score, opponentLogo });
       // }
     });
 
     // Return the array of players
-    return games;
+    return schedule;
 
   } catch (error) {
     console.error('Error fetching or parsing data:', error);
@@ -62,14 +62,14 @@ const handler = async (req, res) => {
     case 'GET':
       let cache = await redisClient.get(CACHE_NAME);
       if (cache) {
-        return res.send({ type: 'redis', ...cache });
+        return res.send({ type: 'redis', schedule: cache });
       }
 
-      const games = await scrapeSchedule('https://etsubucs.com/sports/mens-basketball/schedule');
-      redisClient.set(CACHE_NAME, JSON.stringify(games), {
+      const schedule = await scrapeSchedule('https://etsubucs.com/sports/mens-basketball/schedule');
+      redisClient.set(CACHE_NAME, JSON.stringify(schedule), {
         ex: CACHE_IN_SECONDS,
       });
-      res.send({ type: 'api', ...games });
+      res.send({ type: 'api', schedule });
 
       break;
     default:

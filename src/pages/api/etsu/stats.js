@@ -59,14 +59,14 @@ const handler = async (req, res) => {
     case 'GET':
       let cache = await redisClient.get(CACHE_NAME);
       if (cache) {
-        return res.send({ type: 'redis', ...cache });
+        return res.send({ type: 'redis', stats: cache });
       }
 
       const stats = await scrapeSchedule('https://etsubucs.com/sports/mens-basketball/stats');
       redisClient.set(CACHE_NAME, JSON.stringify(stats), {
         ex: CACHE_IN_SECONDS,
       });
-      res.send({ type: 'api', ...stats });
+      res.send({ type: 'api', stats });
 
       break;
     default:
