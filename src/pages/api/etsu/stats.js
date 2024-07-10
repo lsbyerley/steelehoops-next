@@ -34,13 +34,21 @@ async function scrapeSchedule(url) {
       // Skip the last team row
       if (index !== statsTableTrs.length -1) {
         // Extract player information from each row
+        const assists = $(element).find('td:nth-child(11)').text().trim();
+        const blocks = $(element).find('td:nth-child(13)').text().trim();
         const name = $(element).find('td:nth-child(2) a').text().trim();
+        const minutes = $(element).find('td:nth-child(4)').text().trim();
         const points = $(element).find('td:nth-child(14)').text().trim();
         const rebounds = $(element).find('td:nth-child(10)').text().trim();
-        const assists = $(element).find('td:nth-child(11)').text().trim();
+        const steals = $(element).find('td:nth-child(12)').text().trim();
+        const fgPercent = $(element).find('td:nth-child(5)').text().trim();
+        const threePercent = $(element).find('td:nth-child(6)').text().trim();
+
+        const firstName = name.split(', ')[1];
+        const lastName = name.split (', ')[0];
         
         // Create a player object and push it to the players array
-        stats.push({ name, points, rebounds, assists });
+        stats.push({ assists, blocks, firstName, lastName, minutes, points, rebounds, steals, fgPercent, threePercent });
       }
     });
 
