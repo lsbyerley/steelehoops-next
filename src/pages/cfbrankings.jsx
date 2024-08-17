@@ -24,6 +24,7 @@ const CFBRankings = ({ teams }) => {
             <th>Wins</th>
             <th>Team</th>
             <th>Rating</th>
+            <th>Conf Wins</th>
             <th>WinConf%</th>
             <th>Losses</th>
           </tr>
@@ -35,6 +36,7 @@ const CFBRankings = ({ teams }) => {
                 <th>{t.wins}</th>
                 <td>{t.team}</td>
                 <td>{t.rating}</td>
+                <td>{t.confWins}</td>
                 <td>{t.winConf}</td>
                 <td>{t.losses}</td>
               </tr>

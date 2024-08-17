@@ -32,6 +32,8 @@ async function scrape() {
       let rating = $(elem).find('td.column-2').text();
       let wins = $(elem).find('td.column-4').text();
       let losses = $(elem).find('td.column-5').text();
+      let confWins = $(elem).find('td.column-6').text();
+      let confLosses = $(elem).find('td.column-7').text();
       let winConf = $(elem).find('td.column-8').text();
 
       if (team && rating !== 'Rating') {
@@ -40,6 +42,8 @@ async function scrape() {
           rating,
           wins,
           losses,
+          confWins,
+          confLosses,
           winConf,
           taken: false,
         })
