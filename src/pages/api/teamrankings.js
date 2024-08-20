@@ -3,22 +3,21 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 
 const tableIds = [
-  '#tablepress-2224',
-  '#tablepress-2225',
-  '#tablepress-2226',
-  '#tablepress-2231',
-  '#tablepress-2232',
-  '#tablepress-2223',
-  '#tablepress-2227',
-  '#tablepress-2229',
-  '#tablepress-2230',
-  '#tablepress-2233',
-  '#tablepress-2228',
+  '#tablepress-2512',
+  '#tablepress-2513',
+  '#tablepress-2514',
+  '#tablepress-2519',
+  '#tablepress-2511',
+  '#tablepress-2515',
+  '#tablepress-2517',
+  '#tablepress-2518',
+  '#tablepress-2520',
+  '#tablepress-2516',
 ];
 
 async function scrape() {
   const url =
-    'https://betiq.teamrankings.com/articles/college-football-preseason-rankings-predictions-2023/';
+    'https://betiq.teamrankings.com/articles/college-football-preseason-rankings-predictions-2024/';
   const statsRes = await axios.get(url);
 
   const $ = cheerio.load(statsRes.data, { normalizeWhitespace: true });
