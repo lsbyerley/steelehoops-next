@@ -31,20 +31,19 @@ async function scrapeSchedule(url) {
 
     // Iterate over each row (player) in the table
     scheduleList.find('li.sidearm-schedule-game').each((index, element) => {
-      // Skip the header row
-      // if (index !== 0) {
-        // Extract player information from each row
-        const opponent = $(element).find('div.sidearm-schedule-game-opponent div.sidearm-schedule-game-opponent-name a').text().trim();
-        const vsat = $(element).find('div.sidearm-schedule-game-opponent-text span.sidearm-schedule-game-conference-vs span').text().trim();
-        const date = $(element).find('div.sidearm-schedule-game-opponent-date span:nth-child(1)').text().trim();
-        const time = $(element).find('div.sidearm-schedule-game-opponent-date span:nth-child(2)').text().trim();
-        const result = $(element).find('div.sidearm-schedule-game-details div.sidearm-schedule-game-result span:nth-child(2)').text().trim();
-        const score = $(element).find('div.sidearm-schedule-game-details div.sidearm-schedule-game-result span:nth-child(3)').text().trim();
-        const opponentLogo = $(element).find('div.sidearm-schedule-game-opponent-logo img').attr('data-src');
-        
-        // Create a player object and push it to the players array
+      // Extract game information from each row
+      const opponent = $(element).find('div.sidearm-schedule-game-opponent div.sidearm-schedule-game-opponent-name a').text().trim();
+      const vsat = $(element).find('div.sidearm-schedule-game-opponent-text span.sidearm-schedule-game-conference-vs span').text().trim();
+      const date = $(element).find('div.sidearm-schedule-game-opponent-date span:nth-child(1)').text().trim();
+      const time = $(element).find('div.sidearm-schedule-game-opponent-date span:nth-child(2)').text().trim();
+      const result = $(element).find('div.sidearm-schedule-game-details div.sidearm-schedule-game-result span:nth-child(2)').text().trim();
+      const score = $(element).find('div.sidearm-schedule-game-details div.sidearm-schedule-game-result span:nth-child(3)').text().trim();
+      const opponentLogo = $(element).find('div.sidearm-schedule-game-opponent-logo img').attr('data-src');
+      
+      // Create a player object and push it to the players array
+      if (opponent !== '') {
         schedule.push({ opponent, vsat, date, time, result, score, opponentLogo });
-      // }
+      }
     });
 
     // Return the array of players
