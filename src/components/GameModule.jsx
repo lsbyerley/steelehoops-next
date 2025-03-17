@@ -40,15 +40,16 @@ const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
       )}
     >
       <header className='flex items-center justify-between flex-none mb-2'>
-        <div className='text-xs'>
+        <div className='text-xs flex items-center'>
           <a
-            className='link link-hover'
+            className='link link-neutral mr-1'
             href={gameLink}
             target='_blank'
             rel='noreferrer'
           >
             Gamecast
           </a>
+          <p>(KP Diff: {game.kpDiff})</p>
         </div>
         <div className='text-xs'>
           {!halftimeGame && <span>{game.startTime} EST</span>}

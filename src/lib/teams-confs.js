@@ -1121,7 +1121,7 @@ const teams = [
     id: '2377',
     name: 'McNeese',
     statName: 'McNeese State',
-    kpName: 'McNeese St.',
+    kpName: 'McNeese',
   },
   {
     id: '235',
@@ -1631,7 +1631,7 @@ const teams = [
     id: '2565',
     name: 'SIU-Edwardsville',
     statName: 'SIU Edwardsville',
-    kpName: 'SIU Edwardsville',
+    kpName: 'SIUE',
   },
   {
     id: '2567',
@@ -2293,6 +2293,12 @@ const teams = [
     statName: 'Texas A&M-Commerce',
     kpName: 'Texas A&M Commerce',
   },
+  {
+    id: '28',
+    name: 'UC San Diego',
+    statName: 'UC-San Diego',
+    kpName: 'UC San Diego',
+  }
 ];
 
 export default teams;
