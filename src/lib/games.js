@@ -19,12 +19,12 @@ import normalizeTeam from './normalizeTeam';
 // when attaching seasontype, live stats are more up to date
 //----------------------------------------------------------------------------//
 
-const getGames = async (paramDate, teamRatings, teamStats) => {
+const getGames = async (paramDate, teamRatings, teamStats, groupId) => {
   let useTestGames = false;
   let gamesData;
 
   try {
-    let groups = 50;
+    let groups = groupId || 50;
     // let groups = 100;
     let seasonType = '&seasontype=2'; // TODO: toggle this based on when season is
     let gamesDate = format(new Date(), 'yyyyMMdd');
@@ -322,7 +322,7 @@ const getGames = async (paramDate, teamRatings, teamStats) => {
       totalInPost: inpostGames.length,
       totalNoOdds: noOdds.length,
       nonMatches,
-      games: games,
+      games,
       noOdds,
       inpostGames,
       htGames,

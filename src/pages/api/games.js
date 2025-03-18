@@ -23,14 +23,15 @@ const handler = async (req, res) => {
       const { data: teamStats } = await axios.get(`${siteUrl}/api/stats`);
 
       const date = req.query?.date;
-      const cacheSlug = date ? `games-cache-${date}` : 'games-cache';
+      const groupId = req.query?.groupId || 50;
+      const cacheSlug = date ? `games-cache-${groupId}-${date}` : `games-cache-${groupId}`;
 
       let cache = await redisClient.get(cacheSlug);
       if (cache) {
         return res.send({ type: 'redis', ...cache });
       }
 
-      const games = await getGames(date, teamRatings, teamStats);
+      const games = await getGames(date, teamRatings, teamStats, groupId);
       redisClient.set(cacheSlug, JSON.stringify(games), {
         ex: CACHE_IN_SECONDS,
       });

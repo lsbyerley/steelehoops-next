@@ -389,7 +389,7 @@ const teams = [
     id: '2463',
     name: 'CSU Northridge',
     statName: 'Cal State Northridge',
-    kpName: 'Cal St. Northridge',
+    kpName: 'CSUN',
   },
   {
     id: '13',
@@ -1817,7 +1817,7 @@ const teams = [
     id: '2598',
     name: 'St. Francis (PA)',
     statName: 'Saint Francis (PA)',
-    kpName: 'St. Francis PA',
+    kpName: 'St. Francis',
   },
   {
     id: '2599',
