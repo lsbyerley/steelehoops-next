@@ -9,7 +9,7 @@ const getStats = async () => {
 async function scrape() {
   const url =
     'https://www.sports-reference.com/cbb/seasons/men/2025-school-stats.html';
-  
+
   try {
     const statsRes = await axios.get(url);
     const $ = cheerio.load(statsRes.data, { normalizeWhitespace: true });
@@ -27,7 +27,7 @@ async function scrape() {
 
     let stats = [];
     statRows.each((i, elem) => {
-      let team = $(elem).find('td[data-stat="school_name"] a').text();
+      const team = $(elem).find('td[data-stat="school_name"] a').text();
       const fg3_pct = $(elem).find('td[data-stat="fg3_pct"]').text();
 
       if (team) {
@@ -38,16 +38,19 @@ async function scrape() {
       }
     });
 
+    stats?.sort((a, b) => {
+      return parseFloat(b.fg3_pct) - parseFloat(a.fg3_pct);
+    });
+
     return {
       stats: stats,
     };
-
-  } catch(err) {
+  } catch (err) {
     return {
       stats: [],
       error: err,
-    }
-  };
+    };
+  }
 }
 
 export default getStats;
