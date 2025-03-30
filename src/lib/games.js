@@ -4,8 +4,6 @@ import axios from 'axios';
 import get from 'just-safe-get';
 import round from 'lodash.round';
 import predictor from './predictor';
-import getRatings from './ratings';
-import getStats from './stats';
 import normalizeTeam from './normalizeTeam';
 
 //----------------------------------------------------------------------------//

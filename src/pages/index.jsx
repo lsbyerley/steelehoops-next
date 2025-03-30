@@ -68,7 +68,7 @@ const Home = () => {
         <Header gamesData={gamesData} gamesDate={gamesDate} gamesLoading={isLoading} fetchGames={fetchGames} />
         <div className='grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3'>
           {isLoading && <Placeholders number={9} />}
-          {gamesData?.htGames
+          {!isLoading && gamesData?.htGames
             ?.filter((g) => g.halftimeAction === 'yes-bet')
             .map((g) => {
               return (
@@ -77,7 +77,7 @@ const Home = () => {
                 </div>
               );
             })}
-          {gamesData?.games?.map((g) => {
+          {!isLoading && gamesData?.games?.map((g) => {
             return <GameModule key={g.id} game={g} />;
           })}
           {!isLoading &&
