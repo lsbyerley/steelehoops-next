@@ -1,6 +1,7 @@
 import { formatInTimeZone } from 'date-fns-tz';
 import { parseISO } from 'date-fns';
 import { ArrowPathIcon } from '@heroicons/react/20/solid';
+import DatePicker from './DatePicker';
 import clsx from 'clsx';
 
 const Header = ({ gamesData, gamesDate, gamesLoading = false, fetchGames }) => {
@@ -33,15 +34,8 @@ const Header = ({ gamesData, gamesDate, gamesLoading = false, fetchGames }) => {
   return (
     <header className='flex items-center justify-between flex-none px-6 py-4 border-b shadow-md'>
       <div>
-        <h1 className='text-lg font-semibold leading-6'>
-          <time dateTime={gameDateShort} className='sm:hidden'>
-            {gameDateShort}
-          </time>
-          <time dateTime={gameDateLong} className='hidden sm:inline'>
-            {gameDateLong}
-          </time>
-        </h1>
-        <p className='mt-1 text-sm'>{gameDateDay}</p>
+        {!gamesLoading && gamesData && <DatePicker gamesDate={gamesData?.date} fetchGames={fetchGames} />}
+        <p className='mt-1 text-sm'>{!gamesLoading ? gameDateDay : '-'}</p>
       </div>
       <div className='flex items-center'>
         <div className=''>

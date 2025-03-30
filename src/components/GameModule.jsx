@@ -35,7 +35,7 @@ const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
       className={clsx(
         'w-full p-4 rounded-lg bg-base-100',
         game.totalDiff >= 5 || game.lineDiff >= 3 || halftimeBet
-          ? 'shadow-md ring-2 ring-accent/50'
+          ? 'shadow-md ring-2 ring-green-400'
           : 'shadow-md ring-1 ring-base-content/5'
       )}
     >
@@ -95,7 +95,7 @@ const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
               <td
                 className={clsx(
                   'relative',
-                  game.totalDiff >= 5 ? 'text-accent font-bold' : ''
+                  game.totalDiff >= 5 ? 'text-green-400 font-bold' : ''
                 )}
               >
                 {game.prediction?.total}
@@ -104,7 +104,7 @@ const GameModule = ({ game, halftimeGame = false, halftimeBet = false }) => {
               <td
                 className={clsx(
                   'relative',
-                  game.lineDiff >= 5 ? 'text-accent font-bold' : ''
+                  game.lineDiff >= 4 ? 'text-green-400 font-bold' : ''
                 )}
               >
                 {shLine(game)}
