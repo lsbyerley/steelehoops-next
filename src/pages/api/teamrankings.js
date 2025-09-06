@@ -3,21 +3,21 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 
 const tableIds = [
-  '#tablepress-2512',
-  '#tablepress-2513',
-  '#tablepress-2514',
-  '#tablepress-2519',
-  '#tablepress-2511',
-  '#tablepress-2515',
-  '#tablepress-2517',
-  '#tablepress-2518',
-  '#tablepress-2520',
-  '#tablepress-2516',
+  '#tablepress-2915',
+  '#tablepress-2916',
+  '#tablepress-2917',
+  '#tablepress-2921',
+  '#tablepress-2914',
+  '#tablepress-2918',
+  '#tablepress-2919',
+  '#tablepress-2920',
+  '#tablepress-2922',
+  '#tablepress-2923',
 ];
 
 async function scrape() {
   const url =
-    'https://betiq.teamrankings.com/articles/college-football-preseason-rankings-predictions-2024/';
+    'https://betiq.teamrankings.com/articles/college-football-rankings-predictions-2025/';
   const statsRes = await axios.get(url);
 
   const $ = cheerio.load(statsRes.data, { normalizeWhitespace: true });
@@ -60,7 +60,19 @@ async function scrape() {
     }
     // a must be equal to b
     return 0;
-  })
+  });
+
+  /* const sorted = rankings.sort((a,b) => {
+    let aRating = parseFloat(a.rating);
+    let bRating = parseFloat(b.rating);
+    if (aRating < bRating) {
+      return 1;
+    } else if (aRating > bRating) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  }); */
 
   return {
     rankings: sorted,

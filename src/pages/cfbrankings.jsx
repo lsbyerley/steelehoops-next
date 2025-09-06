@@ -8,9 +8,22 @@ export const getServerSideProps = async (ctx) => {
     console.error('LOG: error importing teams json file');
   }
 
+  const sorted = teams?.rankings;
+  /* const sorted = teams?.rankings.sort((a, b) => {
+    let aRating = parseFloat(a.rating);
+    let bRating = parseFloat(b.rating);
+    if (aRating < bRating) {
+      return 1;
+    } else if (aRating > bRating) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  }); */
+
   return {
     props: {
-      teams: teams?.rankings || [],
+      teams: sorted || [],
     },
   };
 };
@@ -21,6 +34,7 @@ const CFBRankings = ({ teams }) => {
       <table className='table table-sm'>
         <thead>
           <tr>
+            <th>Rk</th>
             <th>Wins</th>
             <th>Team</th>
             <th>Rating</th>
@@ -30,9 +44,10 @@ const CFBRankings = ({ teams }) => {
           </tr>
         </thead>
         <tbody>
-          {teams.map((t) => {
+          {teams.map((t, index) => {
             return (
               <tr key={t.team} className={clsx(t.taken ? 'bg-base-300' : '', t.myTeam ? 'text-red-600' : '')}>
+                <th>{index + 1}</th>
                 <th>{t.wins}</th>
                 <td>{t.team}</td>
                 <td>{t.rating}</td>
