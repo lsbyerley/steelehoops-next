@@ -125,6 +125,7 @@ const renderRow = (
       const oppPoints = isHome ? game.awayPoints : game.homePoints;
       const opponent = isHome ? game.awayTeam : game.homeTeam;
       const opponentRank = getTeamRank(opponent, game, polls);
+      const isSitWeek = sitPlan[teamData.team] === weekIndex;
 
       let outcome = '';
       let tdClass = 'text-gray-700';
@@ -136,6 +137,17 @@ const renderRow = (
           outcome = 'L';
           tdClass = 'bg-red-100 text-red-700 font-bold';
         }
+
+        // Override colors if this is a sit week
+        if (isSitWeek) {
+          if (teamPoints > oppPoints) {
+            // sat team WON → bad sit → RED
+            tdClass = 'bg-red-100 text-red-700 font-bold';
+          } else if (teamPoints < oppPoints) {
+            // sat team LOST → good sit → GREEN
+            tdClass = 'bg-green-100 text-green-700 font-bold';
+          }
+        }
       }
 
       const points = calculateGamePoints(
@@ -146,8 +158,6 @@ const renderRow = (
         polls,
         franchiseTeam
       );
-
-      const isSitWeek = sitPlan[teamData.team] === weekIndex;
 
       return (
         <td
