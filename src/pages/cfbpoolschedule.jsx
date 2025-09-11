@@ -7,12 +7,12 @@ const API_POLLS_URL = '/api/cfbpolls';
 const teamData = [
   { name: "Michigan", sitPlan: 2 },
   { name: "Arizona State", sitPlan: null, isFranchise: true },
-  { name: "South Carolina", sitPlan: 9 },
+  { name: "South Carolina", sitPlan: 12 },
   { name: "Georgia Tech", sitPlan: 14 },
   { name: "Oregon State", sitPlan: 4 },
   { name: "Pittsburgh", sitPlan: 7 },
   { name: "Vanderbilt", sitPlan: 10 },
-  { name: "Southern Miss", sitPlan: 3 }
+  { name: "Southern Miss", sitPlan: 8 }
 ];
 
 // For backwards compatibility with the rest of the code:

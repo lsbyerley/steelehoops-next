@@ -38,7 +38,12 @@ const WeeklyGrid = ({ schedule, sitPlan, polls, franchiseTeam }) => {
             </th>
             {schedule.data.map((teamData) => (
               <th key={teamData.team} className='border p-2'>
-                {teamData.team}
+                <div className='flex items-center justify-center'>
+                  {teamData.team}
+                  {franchiseTeam === teamData.team && (
+                    <div className='text-xs text-yellow-600 ml-1 font-bold'>(F)</div>
+                  )}
+                </div>
                 <div className='text-xs text-gray-500'>
                   Total:{' '}
                   {calculateSeasonPoints(
