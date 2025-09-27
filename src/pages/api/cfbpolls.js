@@ -38,7 +38,7 @@ const handler = async (req, res) => {
       }
 
       const polls = await getPolls({ year });
-      redisClient.set(`cfb-polls-cache-${year}`, JSON.stringify(polls), { ex: CACHE_IN_SECONDS });
+      await redisClient.set(`cfb-polls-cache-${year}`, JSON.stringify(polls), { ex: CACHE_IN_SECONDS });
       res.send({ type: 'api', data: polls });
 
       break;

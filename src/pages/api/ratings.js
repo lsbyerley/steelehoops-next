@@ -21,7 +21,7 @@ const handler = async (req, res) => {
       }
 
       const ratings = await getRatings();
-      redisClient.set('ratings-cache', JSON.stringify(ratings), {
+      await redisClient.set('ratings-cache', JSON.stringify(ratings), {
         ex: CACHE_IN_SECONDS,
       });
       res.send({ type: 'api', ...ratings });

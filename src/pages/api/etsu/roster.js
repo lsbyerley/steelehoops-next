@@ -60,7 +60,7 @@ const handler = async (req, res) => {
       }
 
       const roster = await scrapeRoster('https://etsubucs.com/sports/mens-basketball/roster');
-      redisClient.set(CACHE_NAME, JSON.stringify(roster), {
+      await redisClient.set(CACHE_NAME, JSON.stringify(roster), {
         ex: CACHE_IN_SECONDS,
       });
       res.send({ type: 'api', roster });

@@ -74,7 +74,7 @@ const handler = async (req, res) => {
       // }
 
       const torvik = await scrapeTorvik('https://barttorvik.com/team.php?year=2024&team=East+Tennessee+St.');
-      redisClient.set(CACHE_NAME, JSON.stringify(torvik), {
+      await redisClient.set(CACHE_NAME, JSON.stringify(torvik), {
         ex: CACHE_IN_SECONDS,
       });
       res.send({ type: 'api', torvik });

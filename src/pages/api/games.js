@@ -32,7 +32,7 @@ const handler = async (req, res) => {
       }
 
       const games = await getGames(date, teamRatings, teamStats, groupId);
-      redisClient.set(cacheSlug, JSON.stringify(games), {
+      await redisClient.set(cacheSlug, JSON.stringify(games), {
         ex: CACHE_IN_SECONDS,
       });
       res.send({ type: 'api', ...games });

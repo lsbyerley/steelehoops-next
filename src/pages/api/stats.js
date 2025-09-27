@@ -22,7 +22,7 @@ const handler = async (req, res) => {
       }
 
       const stats = await getStats();
-      redisClient.set('stats-cache', JSON.stringify(stats), { ex: CACHE_IN_SECONDS });
+      await redisClient.set('stats-cache', JSON.stringify(stats), { ex: CACHE_IN_SECONDS });
       res.send({ type: 'api', ...stats });
 
       break;

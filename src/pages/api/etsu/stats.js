@@ -71,7 +71,7 @@ const handler = async (req, res) => {
       }
 
       const stats = await scrapeSchedule('https://etsubucs.com/sports/mens-basketball/stats');
-      redisClient.set(CACHE_NAME, JSON.stringify(stats), {
+      await redisClient.set(CACHE_NAME, JSON.stringify(stats), {
         ex: CACHE_IN_SECONDS,
       });
       res.send({ type: 'api', stats });
