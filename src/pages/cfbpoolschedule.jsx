@@ -11,7 +11,7 @@ const teamData = [
   { name: "Georgia Tech", sitPlan: 14 },
   { name: "Oregon State", sitPlan: 4 },
   { name: "Pittsburgh", sitPlan: 7 },
-  { name: "Vanderbilt", sitPlan: 10 },
+  { name: "Vanderbilt", sitPlan: 6 },
   { name: "Southern Miss", sitPlan: 8 }
 ];
 
