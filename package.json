@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "dev:https": "next dev --experimental-https",
+    "dev:https:host": "next dev --experimental-https -H steelehoops.test"
   },
   "dependencies": {
     "@heroicons/react": "2.1.3",
