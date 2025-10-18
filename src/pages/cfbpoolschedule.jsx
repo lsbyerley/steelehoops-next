@@ -5,19 +5,22 @@ const API_SCHEDULE_URL = '/api/cfbschedule';
 const API_POLLS_URL = '/api/cfbpolls';
 
 const teamData = [
-  { name: "Michigan", sitPlan: 2 },
-  { name: "Arizona State", sitPlan: null, isFranchise: true },
-  { name: "South Carolina", sitPlan: 12 },
-  { name: "Georgia Tech", sitPlan: 14 },
-  { name: "Oregon State", sitPlan: 4 },
-  { name: "Pittsburgh", sitPlan: 7 },
-  { name: "Vanderbilt", sitPlan: 6 },
-  { name: "Southern Miss", sitPlan: 8 }
+  { name: "Michigan", sitWeek: 2 },
+  { name: "Arizona State", isFranchise: true },
+  { name: "South Carolina", sitWeek: 12 },
+  { name: "Georgia Tech", sitWeek: 14 },
+  { name: "Oregon State", sitWeek: 4 },
+  { name: "Pittsburgh", sitWeek: 7 },
+  { name: "Vanderbilt", sitWeek: 6 },
+  { name: "Southern Miss", sitWeek: null }
 ];
 
 // For backwards compatibility with the rest of the code:
 const teams = teamData.map(t => t.name);
-const sitPlan = teamData.reduce((acc, t) => ({ ...acc, [t.name]: t.sitPlan }), {});
+const sitPlan = teamData.reduce((acc, t) => {
+  if (t.isFranchise) return acc;
+  return ({ ...acc, [t.name]: t.sitWeek });
+}, {});
 const franchiseTeam = teamData.find(t => t.isFranchise)?.name || null;
 
 const CfbPoolSchedule = () => {

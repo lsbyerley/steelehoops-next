@@ -18,12 +18,14 @@ const WeeklyGrid = ({ schedule, sitPlan, polls, franchiseTeam }) => {
     ),
     0
   );
-
+  // Calculate league total points
   const leagueTotalPoints = schedule.data.reduce(
     (sum, teamData) =>
       sum + calculateSeasonPoints(teamData, sitPlan, polls, franchiseTeam),
     0
   );
+  // Track teams sat for displaying teams not sat yet
+  const teamsSat = [];
 
   return (
     <div className='overflow-x-auto'>
@@ -68,6 +70,7 @@ const WeeklyGrid = ({ schedule, sitPlan, polls, franchiseTeam }) => {
               week,
               polls,
               sitPlan,
+              teamsSat,
               franchiseTeam,
               false
             );
@@ -82,12 +85,19 @@ const WeeklyGrid = ({ schedule, sitPlan, polls, franchiseTeam }) => {
               i + 1,
               polls,
               sitPlan,
+              teamsSat,
               franchiseTeam,
               true
             );
           })}
         </tbody>
       </table>
+      <div className='mt-4'>
+        <h3 className='text-lg font-bold'>Teams Left To Sit</h3>
+        <pre className='bg-gray-100 p-2 rounded'>
+          {Object.keys(sitPlan).filter((team) => !teamsSat.includes(team)).join(', ') || 'None'}
+        </pre>
+      </div>
     </div>
   );
 };
@@ -98,6 +108,7 @@ const renderRow = (
   weekIndex,
   polls,
   sitPlan,
+  teamsSat,
   franchiseTeam,
   isPostseason = false
 ) => (
@@ -145,6 +156,7 @@ const renderRow = (
 
         // Override colors if this is a sit week
         if (isSitWeek) {
+          teamsSat.push(teamData.team);
           if (teamPoints > oppPoints) {
             // sat team WON → bad sit → RED
             tdClass = 'bg-red-100 text-red-700 font-bold';
