@@ -8,7 +8,7 @@ const teamData = [
   { name: "Michigan", sitWeek: 2 },
   { name: "Arizona State", isFranchise: true },
   { name: "South Carolina", sitWeek: 12 },
-  { name: "Georgia Tech", sitWeek: 14 },
+  { name: "Georgia Tech", sitWeek: 8 },
   { name: "Oregon State", sitWeek: 4 },
   { name: "Pittsburgh", sitWeek: 7 },
   { name: "Vanderbilt", sitWeek: 6 },
