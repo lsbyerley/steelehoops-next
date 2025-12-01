@@ -1,4 +1,5 @@
 import React from 'react';
+import { lightFormat } from 'date-fns';
 import {
   cn,
   calculateGamePoints,
@@ -136,6 +137,7 @@ const renderRow = (
         );
       }
 
+      const startDate = new Date(game.startDate);
       const isHome = game.homeTeam === teamData.team;
       const teamPoints = isHome ? game.homePoints : game.awayPoints;
       const oppPoints = isHome ? game.awayPoints : game.homePoints;
@@ -201,6 +203,11 @@ const renderRow = (
           )}
           {game.completed && (
             <div className='text-sm font-semibold'>{points} pts</div>
+          )}
+          {!game.completed && (
+            <div className='text-xs text-gray-500'>
+              {lightFormat(startDate, 'h:mm a')}
+            </div>
           )}
         </td>
       );
