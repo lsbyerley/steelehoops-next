@@ -84,13 +84,9 @@ const getGames = async (paramDate, teamRatings, teamStats, groupId) => {
         };
 
         let awayTeam =
-          teamOne?.homeAway === 'away'
-            ? normalizeTeam(teamOne)
-            : normalizeTeam(teamTwo);
+          teamOne?.homeAway === 'away' ? normalizeTeam(teamOne) : normalizeTeam(teamTwo);
         let homeTeam =
-          teamTwo?.homeAway === 'home'
-            ? normalizeTeam(teamTwo)
-            : normalizeTeam(teamOne);
+          teamTwo?.homeAway === 'home' ? normalizeTeam(teamTwo) : normalizeTeam(teamOne);
 
         if (status.state === 'in') {
           areAnyGamesLive = true;
@@ -105,9 +101,7 @@ const getGames = async (paramDate, teamRatings, teamStats, groupId) => {
             })
           : null;
         if (!awayTeam.kenPom) {
-          nonMatches.push(
-            'KP Away: ' + awayTeam.name + ' - ' + awayTeam.kpName
-          );
+          nonMatches.push('KP Away: ' + awayTeam.name + ' - ' + awayTeam.kpName);
         }
 
         homeTeam.kenPom = teamRatings?.ratings
@@ -116,9 +110,7 @@ const getGames = async (paramDate, teamRatings, teamStats, groupId) => {
             })
           : null;
         if (!homeTeam.kenPom) {
-          nonMatches.push(
-            'KP Home: ' + homeTeam.name + ' - ' + homeTeam.kpName
-          );
+          nonMatches.push('KP Home: ' + homeTeam.name + ' - ' + homeTeam.kpName);
         }
 
         /*
@@ -128,18 +120,14 @@ const getGames = async (paramDate, teamRatings, teamStats, groupId) => {
           return ts.team === awayTeam.statName;
         });
         if (!awayTeam.stats) {
-          nonMatches.push(
-            'Stats Away: ' + awayTeam.name + ' - ' + awayTeam.statName
-          );
+          nonMatches.push('Stats Away: ' + awayTeam.name + ' - ' + awayTeam.statName);
         }
 
         homeTeam.stats = teamStats?.stats.find((ts) => {
           return ts.team === homeTeam.statName;
         });
         if (!homeTeam.stats) {
-          nonMatches.push(
-            'Stats Home: ' + homeTeam.name + ' - ' + homeTeam.statName
-          );
+          nonMatches.push('Stats Home: ' + homeTeam.name + ' - ' + homeTeam.statName);
         }
 
         /*
@@ -161,10 +149,8 @@ const getGames = async (paramDate, teamRatings, teamStats, groupId) => {
           homeTeam.threePtAtt &&
           homeTeam.threePtMade
         ) {
-          let atSurplusThrees =
-            awayTeam.threePtMade - awayTeam.threePtAtt * awayTeam.stats.fg3_pct;
-          let htSurplusThrees =
-            homeTeam.threePtMade - homeTeam.threePtAtt * homeTeam.stats.fg3_pct;
+          let atSurplusThrees = awayTeam.threePtMade - awayTeam.threePtAtt * awayTeam.stats.fg3_pct;
+          let htSurplusThrees = homeTeam.threePtMade - homeTeam.threePtAtt * homeTeam.stats.fg3_pct;
 
           awayTeam.stats.surplusThrees = round(atSurplusThrees, 2);
           homeTeam.stats.surplusThrees = round(htSurplusThrees, 2);
@@ -174,10 +160,7 @@ const getGames = async (paramDate, teamRatings, teamStats, groupId) => {
             surplusTeam === 'home'
               ? homeTeam.score - awayTeam.score
               : awayTeam.score - homeTeam.score;
-          surplusThreeDiff = round(
-            Math.abs(atSurplusThrees - htSurplusThrees),
-            2
-          );
+          surplusThreeDiff = round(Math.abs(atSurplusThrees - htSurplusThrees), 2);
 
           if (surplusThreeDiff >= 1 && scoringMargin >= 0) {
             halftimeAction = 'yes-bet';
@@ -229,24 +212,16 @@ const getGames = async (paramDate, teamRatings, teamStats, groupId) => {
               }
             }
 
-            let shSpread =
-              prediction.awayLine > 0
-                ? prediction.awayLine
-                : prediction.homeLine;
+            let shSpread = prediction.awayLine > 0 ? prediction.awayLine : prediction.homeLine;
 
             if (vegasFave !== prediction.shFave) {
               // this looks odd but the prediction generator has the favorite as a positive number instead of negative
               // TODO: change that in the predictor
               let linetodiff =
-                prediction.shFave === 'away'
-                  ? prediction.homeLine
-                  : prediction.awayLine;
+                prediction.shFave === 'away' ? prediction.homeLine : prediction.awayLine;
               lineDiff = vegasSpread - linetodiff;
             } else {
-              lineDiff =
-                vegasSpread > shSpread
-                  ? vegasSpread - shSpread
-                  : shSpread - vegasSpread;
+              lineDiff = vegasSpread > shSpread ? vegasSpread - shSpread : shSpread - vegasSpread;
               lineDiff = Math.abs(vegasSpread - shSpread);
             }
 

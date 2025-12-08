@@ -5,23 +5,23 @@ const API_SCHEDULE_URL = '/api/cfbschedule';
 const API_POLLS_URL = '/api/cfbpolls';
 
 const teamData = [
-  { name: "Michigan", sitWeek: 2 },
-  { name: "Arizona State", isFranchise: true },
-  { name: "South Carolina", sitWeek: 12 },
-  { name: "Georgia Tech", sitWeek: 8 },
-  { name: "Oregon State", sitWeek: 4 },
-  { name: "Pittsburgh", sitWeek: 7 },
-  { name: "Vanderbilt", sitWeek: 6 },
-  { name: "Southern Miss", sitWeek: null }
+  { name: 'Michigan', sitWeek: 2 },
+  { name: 'Arizona State', isFranchise: true },
+  { name: 'South Carolina', sitWeek: 12 },
+  { name: 'Georgia Tech', sitWeek: 8 },
+  { name: 'Oregon State', sitWeek: 4 },
+  { name: 'Pittsburgh', sitWeek: 7 },
+  { name: 'Vanderbilt', sitWeek: 6 },
+  { name: 'Southern Miss', sitWeek: null },
 ];
 
 // For backwards compatibility with the rest of the code:
-const teams = teamData.map(t => t.name);
+const teams = teamData.map((t) => t.name);
 const sitPlan = teamData.reduce((acc, t) => {
   if (t.isFranchise) return acc;
-  return ({ ...acc, [t.name]: t.sitWeek });
+  return { ...acc, [t.name]: t.sitWeek };
 }, {});
-const franchiseTeam = teamData.find(t => t.isFranchise)?.name || null;
+const franchiseTeam = teamData.find((t) => t.isFranchise)?.name || null;
 
 const CfbPoolSchedule = () => {
   const [games, setGames] = useState([]);
@@ -32,7 +32,6 @@ const CfbPoolSchedule = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-
         const reqBody = {
           method: 'POST',
           headers: {
@@ -71,12 +70,7 @@ const CfbPoolSchedule = () => {
 
   return (
     <div className="p-4">
-      <WeeklyGrid 
-        schedule={games} 
-        sitPlan={sitPlan}
-        polls={polls} 
-        franchiseTeam={franchiseTeam}
-      />
+      <WeeklyGrid schedule={games} sitPlan={sitPlan} polls={polls} franchiseTeam={franchiseTeam} />
     </div>
   );
 };

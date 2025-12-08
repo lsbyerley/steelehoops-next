@@ -1,7 +1,7 @@
 // import { NextApiRequest, NextApiResponse } from 'next';
-import { Redis } from "@upstash/redis";
-import https from "https";
-import axios from "axios";
+import { Redis } from '@upstash/redis';
+import https from 'https';
+import axios from 'axios';
 // import getStats from '../../lib/stats';
 
 // 5 day cache
@@ -18,18 +18,17 @@ const getPolls = async ({ year }) => {
   const polls = await axios.get(`https://api.collegefootballdata.com/rankings`, {
     params: { year },
     headers: {
-      'Authorization': `Bearer ${apiKey}`
-    }
+      Authorization: `Bearer ${apiKey}`,
+    },
   });
 
   return polls.data;
-}
+};
 
 const handler = async (req, res) => {
   const { method } = req;
   switch (method) {
     case 'GET':
-
       const year = parseInt(req.query.year) || 2025;
 
       let cache = await redisClient.get(`cfb-polls-cache-${year}`);
@@ -38,7 +37,9 @@ const handler = async (req, res) => {
       }
 
       const polls = await getPolls({ year });
-      await redisClient.set(`cfb-polls-cache-${year}`, JSON.stringify(polls), { ex: CACHE_IN_SECONDS });
+      await redisClient.set(`cfb-polls-cache-${year}`, JSON.stringify(polls), {
+        ex: CACHE_IN_SECONDS,
+      });
       res.send({ type: 'api', data: polls });
 
       break;

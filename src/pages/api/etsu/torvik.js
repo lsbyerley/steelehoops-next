@@ -1,11 +1,11 @@
 import { Redis } from '@upstash/redis';
 import axios from 'axios';
-import https from "https";
+import https from 'https';
 import * as cheerio from 'cheerio';
 
 // 12 hour cache
 const CACHE_IN_SECONDS = 43200;
-const CACHE_NAME = 'etsu-torvik-cache'
+const CACHE_NAME = 'etsu-torvik-cache';
 
 // https://docs.upstash.com/redis/sdks/javascriptsdk/advanced#keepalive
 const redisClient = Redis.fromEnv({
@@ -41,23 +41,31 @@ async function scrapeTorvik(url) {
       const time = $(element).find('td:nth-child(2)').text().trim();
       const result = $(element).find('td:nth-child(2)').text().trim();
       const score = $(element).find('td:nth-child(2)').text().trim();
-      const opponentLogo = $(element).find('div.sidearm-schedule-game-opponent-logo img').attr('data-src');
-      
+      const opponentLogo = $(element)
+        .find('div.sidearm-schedule-game-opponent-logo img')
+        .attr('data-src');
+
       // Create a player object and push it to the schedule array
-      schedule.push({ opponent, homeAway, date, time, result, score, opponentLogo });
+      schedule.push({
+        opponent,
+        homeAway,
+        date,
+        time,
+        result,
+        score,
+        opponentLogo,
+      });
     });
 
     statsTableTrs.each((index, element) => {
-
       const player = $(element).find('td:nth-child(5) a').text().trim();
       const ratingPg = $(element).find('td:nth-child(7)').text().trim();
 
-      stats.push({ player, ratingPg })
+      stats.push({ player, ratingPg });
     });
 
     // Return the array of schedule
     return { schedule, stats };
-
   } catch (error) {
     console.error('Error fetching or parsing data:', error);
     return null;
@@ -73,7 +81,9 @@ const handler = async (req, res) => {
       //   return res.send({ type: 'redis', torvik: cache });
       // }
 
-      const torvik = await scrapeTorvik('https://barttorvik.com/team.php?year=2024&team=East+Tennessee+St.');
+      const torvik = await scrapeTorvik(
+        'https://barttorvik.com/team.php?year=2024&team=East+Tennessee+St.'
+      );
       await redisClient.set(CACHE_NAME, JSON.stringify(torvik), {
         ex: CACHE_IN_SECONDS,
       });

@@ -1,6 +1,5 @@
 export const midMajors = [
-  1, 46, 5, 6, 9, 10, 45, 12, 13, 14, 16, 18, 19, 20, 22, 24, 25, 26, 49, 27,
-  29, 30,
+  1, 46, 5, 6, 9, 10, 45, 12, 13, 14, 16, 18, 19, 20, 22, 24, 25, 26, 49, 27, 29, 30,
 ];
 
 export const majorConfs = [2, 62, 3, 8, 7, 4, 11, 44, 23, 21];
@@ -2298,7 +2297,7 @@ const teams = [
     name: 'UC San Diego',
     statName: 'UC-San Diego',
     kpName: 'UC San Diego',
-  }
+  },
 ];
 
 export default teams;

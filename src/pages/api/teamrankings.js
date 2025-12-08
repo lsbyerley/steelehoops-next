@@ -16,8 +16,7 @@ const tableIds = [
 ];
 
 async function scrape() {
-  const url =
-    'https://betiq.teamrankings.com/articles/college-football-rankings-predictions-2025/';
+  const url = 'https://betiq.teamrankings.com/articles/college-football-rankings-predictions-2025/';
   const statsRes = await axios.get(url);
 
   const $ = cheerio.load(statsRes.data, { normalizeWhitespace: true });
@@ -45,12 +44,12 @@ async function scrape() {
           confLosses,
           winConf,
           taken: false,
-        })
+        });
       }
     });
   });
 
-  const sorted = rankings.sort((a,b) => {
+  const sorted = rankings.sort((a, b) => {
     let aWins = parseFloat(a.wins);
     let bWins = parseFloat(b.wins);
     if (aWins < bWins) {
@@ -88,7 +87,6 @@ const handler = async (req, res) => {
   const { method } = req;
   switch (method) {
     case 'GET':
-
       const rankings = await getRankings();
       res.send({ type: 'api', ...rankings });
 

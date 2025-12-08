@@ -7,8 +7,7 @@ const getStats = async () => {
 };
 
 async function scrape() {
-  const url =
-    'https://www.sports-reference.com/cbb/seasons/men/2025-school-stats.html';
+  const url = 'https://www.sports-reference.com/cbb/seasons/men/2025-school-stats.html';
 
   try {
     const statsRes = await axios.get(url);

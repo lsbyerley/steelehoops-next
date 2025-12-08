@@ -54,8 +54,7 @@ async function scrape() {
     };
     totalTeams += 1;
     totalTempo = totalTempo + tempo;
-    totalEfficiency =
-      totalEfficiency + (offensiveEfficiency + defensiveEfficiency) / 2;
+    totalEfficiency = totalEfficiency + (offensiveEfficiency + defensiveEfficiency) / 2;
     teamRatings.push(teamRating);
   });
 

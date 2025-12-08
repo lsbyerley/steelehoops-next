@@ -46,7 +46,7 @@ const Home = () => {
       const queryDate = query?.date;
       if (queryDate === 'usetest') gamesDate = queryDate;
       if (queryDate && isValid(parse(queryDate, 'yyyyMMdd', new Date()))) {
-        gamesDate = format(parse(queryDate, 'yyyyMMdd', new Date()), 'yyyyMMdd')
+        gamesDate = format(parse(queryDate, 'yyyyMMdd', new Date()), 'yyyyMMdd');
       }
 
       setGamesDate(gamesDate);
@@ -58,35 +58,36 @@ const Home = () => {
     <>
       <Head>
         <title>SteeleHoops</title>
-        <meta
-          property='og:title'
-          content='SteeleHoops - Beat The Bookie'
-          key='title'
-        />
+        <meta property="og:title" content="SteeleHoops - Beat The Bookie" key="title" />
       </Head>
       <div>
-        <Header gamesData={gamesData} gamesDate={gamesDate} gamesLoading={isLoading} fetchGames={fetchGames} />
-        <div className='grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3'>
+        <Header
+          gamesData={gamesData}
+          gamesDate={gamesDate}
+          gamesLoading={isLoading}
+          fetchGames={fetchGames}
+        />
+        <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
           {isLoading && <Placeholders number={9} />}
-          {!isLoading && gamesData?.htGames
-            ?.filter((g) => g.halftimeAction === 'yes-bet')
-            .map((g) => {
-              return (
-                <div key={g.id} className='grid-item'>
-                  <GameModule game={g} halftimeGame={true} halftimeBet={true} />
-                </div>
-              );
-            })}
-          {!isLoading && gamesData?.games?.map((g) => {
-            return <GameModule key={g.id} game={g} />;
-          })}
           {!isLoading &&
-            !gamesData?.games?.length &&
-            !hasHtGames && (
-              <div>
-                <p className='mt-1 text-sm'>No games :(</p>
-              </div>
-            )}
+            gamesData?.htGames
+              ?.filter((g) => g.halftimeAction === 'yes-bet')
+              .map((g) => {
+                return (
+                  <div key={g.id} className="grid-item">
+                    <GameModule game={g} halftimeGame={true} halftimeBet={true} />
+                  </div>
+                );
+              })}
+          {!isLoading &&
+            gamesData?.games?.map((g) => {
+              return <GameModule key={g.id} game={g} />;
+            })}
+          {!isLoading && !gamesData?.games?.length && !hasHtGames && (
+            <div>
+              <p className="mt-1 text-sm">No games :(</p>
+            </div>
+          )}
         </div>
       </div>
     </>

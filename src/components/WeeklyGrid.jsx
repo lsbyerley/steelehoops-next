@@ -14,48 +14,37 @@ const WeeklyGrid = ({ schedule, sitPlan, polls, franchiseTeam }) => {
   // Find the max number of postseason games any team has played
   const maxPostWeeks = Math.max(
     ...schedule.data.map(
-      (teamData) =>
-        teamData.games.filter((g) => g.seasonType === 'postseason').length
+      (teamData) => teamData.games.filter((g) => g.seasonType === 'postseason').length
     ),
     0
   );
   // Calculate league total points
   const leagueTotalPoints = schedule.data.reduce(
-    (sum, teamData) =>
-      sum + calculateSeasonPoints(teamData, sitPlan, polls, franchiseTeam),
+    (sum, teamData) => sum + calculateSeasonPoints(teamData, sitPlan, polls, franchiseTeam),
     0
   );
   // Track teams sat for displaying teams not sat yet
   const teamsSat = [];
 
   return (
-    <div className='overflow-x-auto'>
-      <table className='table-auto w-full border-collapse'>
+    <div className="overflow-x-auto">
+      <table className="w-full table-auto border-collapse">
         <thead>
           <tr>
-            <th className='border p-2'>
+            <th className="border p-2">
               Week
-              <div className='text-xs text-gray-500'>
-                {leagueTotalPoints} pts
-              </div>
+              <div className="text-xs text-gray-500">{leagueTotalPoints} pts</div>
             </th>
             {schedule.data.map((teamData) => (
-              <th key={teamData.team} className='border p-2'>
-                <div className='flex items-center justify-center'>
+              <th key={teamData.team} className="border p-2">
+                <div className="flex items-center justify-center">
                   {teamData.team}
                   {franchiseTeam === teamData.team && (
-                    <div className='text-xs text-yellow-600 ml-1 font-bold'>(F)</div>
+                    <div className="ml-1 text-xs font-bold text-yellow-600">(F)</div>
                   )}
                 </div>
-                <div className='text-xs text-gray-500'>
-                  Total:{' '}
-                  {calculateSeasonPoints(
-                    teamData,
-                    sitPlan,
-                    polls,
-                    franchiseTeam
-                  )}{' '}
-                  pts
+                <div className="text-xs text-gray-500">
+                  Total: {calculateSeasonPoints(teamData, sitPlan, polls, franchiseTeam)} pts
                 </div>
               </th>
             ))}
@@ -93,10 +82,12 @@ const WeeklyGrid = ({ schedule, sitPlan, polls, franchiseTeam }) => {
           })}
         </tbody>
       </table>
-      <div className='mt-4'>
-        <h3 className='text-lg font-bold'>Teams Left To Sit</h3>
-        <pre className='bg-gray-100 p-2 rounded'>
-          {Object.keys(sitPlan).filter((team) => !teamsSat.includes(team)).join(', ') || 'None'}
+      <div className="mt-4">
+        <h3 className="text-lg font-bold">Teams Left To Sit</h3>
+        <pre className="rounded bg-gray-100 p-2">
+          {Object.keys(sitPlan)
+            .filter((team) => !teamsSat.includes(team))
+            .join(', ') || 'None'}
         </pre>
       </div>
     </div>
@@ -114,24 +105,20 @@ const renderRow = (
   isPostseason = false
 ) => (
   <tr key={weekLabel}>
-    <td className='border p-2 font-bold'>{weekLabel}</td>
+    <td className="border p-2 font-bold">{weekLabel}</td>
     {schedule.data.map((teamData) => {
       // pick the game for this team in this slot
       let game;
       if (!isPostseason) {
-        game = teamData.games.find(
-          (g) => g.seasonType === 'regular' && g.week === weekIndex
-        );
+        game = teamData.games.find((g) => g.seasonType === 'regular' && g.week === weekIndex);
       } else {
-        const postseasonGames = teamData.games.filter(
-          (g) => g.seasonType === 'postseason'
-        );
+        const postseasonGames = teamData.games.filter((g) => g.seasonType === 'postseason');
         game = postseasonGames[weekIndex - 1] || null; // 0-based index
       }
 
       if (!game) {
         return (
-          <td key={teamData.team} className='border p-2 text-gray-400'>
+          <td key={teamData.team} className="border p-2 text-gray-400">
             --
           </td>
         );
@@ -179,35 +166,24 @@ const renderRow = (
       );
 
       return (
-        <td
-          key={teamData.team}
-          className={cn('border p-2 align-top relative', tdClass)}
-        >
-          <div className='flex items-center'>
-            {!isHome && <div className='mr-1'>@</div>}
-            {opponentRank && (
-              <div className='mr-1 text-xs'>({opponentRank})</div>
-            )}
+        <td key={teamData.team} className={cn('relative border p-2 align-top', tdClass)}>
+          <div className="flex items-center">
+            {!isHome && <div className="mr-1">@</div>}
+            {opponentRank && <div className="mr-1 text-xs">({opponentRank})</div>}
             <div>{opponent}</div>
           </div>
           {game.completed && (
-            <div className='flex'>
-              <div className='mr-2'>{outcome}</div>
+            <div className="flex">
+              <div className="mr-2">{outcome}</div>
               <div>{game.completed ? `${teamPoints}-${oppPoints}` : ''}</div>
             </div>
           )}
           {isSitWeek && teamData.team !== franchiseTeam && (
-            <div className='text-xs text-blue-600 italic absolute top-1 right-1'>
-              Sit
-            </div>
+            <div className="absolute top-1 right-1 text-xs text-blue-600 italic">Sit</div>
           )}
-          {game.completed && (
-            <div className='text-sm font-semibold'>{points} pts</div>
-          )}
+          {game.completed && <div className="text-sm font-semibold">{points} pts</div>}
           {!game.completed && (
-            <div className='text-xs text-gray-500'>
-              {lightFormat(startDate, 'h:mm a')}
-            </div>
+            <div className="text-xs text-gray-500">{lightFormat(startDate, 'h:mm a')}</div>
           )}
         </td>
       );

@@ -10,10 +10,8 @@ async function scrape() {
 
   const gameSections = $('section#section-ncaaf');
   gameSections.each((i, elem) => {
-
     const gameRows = $(elem).find('div[class*="GameRows_eventMarketGridContainer"]');
     gameRows.each((i, elem) => {
-
       const timeColumn = $(elem).find('div[class*="GameRows_compactBettingOption"]');
       const participants = $(elem).find('span[class*="GameRows_participantBox"]');
       const awayTeam = $(participants[0]).text();
@@ -21,11 +19,9 @@ async function scrape() {
 
       odds.push({
         time: '',
-        game: `${awayTeam} @ ${homeTeam}`
-      })
-
+        game: `${awayTeam} @ ${homeTeam}`,
+      });
     });
-
   });
 
   return {
@@ -42,7 +38,6 @@ const handler = async (req, res) => {
   const { method } = req;
   switch (method) {
     case 'GET':
-
       const odds = await getOdds();
       res.send({ type: 'api', ...odds });
 

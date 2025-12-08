@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { clsx } from 'clsx';
 
 export const getServerSideProps = async (ctx) => {
   let teams;
@@ -30,8 +30,8 @@ export const getServerSideProps = async (ctx) => {
 
 const CFBRankings = ({ teams }) => {
   return (
-    <div className='overflow-x-auto max-w-5xl mx-auto'>
-      <table className='table table-sm'>
+    <div className="mx-auto max-w-5xl overflow-x-auto">
+      <table className="table-sm table">
         <thead>
           <tr>
             <th>Rk</th>
@@ -46,7 +46,10 @@ const CFBRankings = ({ teams }) => {
         <tbody>
           {teams.map((t, index) => {
             return (
-              <tr key={t.team} className={clsx(t.taken ? 'bg-base-300' : '', t.myTeam ? 'text-red-600' : '')}>
+              <tr
+                key={t.team}
+                className={clsx(t.taken ? 'bg-base-300' : '', t.myTeam ? 'text-red-600' : '')}
+              >
                 <th>{index + 1}</th>
                 <th>{t.wins}</th>
                 <td>{t.team}</td>

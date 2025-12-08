@@ -1,11 +1,11 @@
 import { Redis } from '@upstash/redis';
 import axios from 'axios';
-import https from "https";
+import https from 'https';
 import * as cheerio from 'cheerio';
 
 // 12 hour cache
 const CACHE_IN_SECONDS = 43200;
-const CACHE_NAME = 'etsu-stats-cache'
+const CACHE_NAME = 'etsu-stats-cache';
 
 // https://docs.upstash.com/redis/sdks/javascriptsdk/advanced#keepalive
 const redisClient = Redis.fromEnv({
@@ -32,7 +32,7 @@ async function scrapeSchedule(url) {
     // Iterate over each row (player) in the table
     statsTableTrs.each((index, element) => {
       // Skip the last team row
-      if (index !== statsTableTrs.length -1) {
+      if (index !== statsTableTrs.length - 1) {
         // Extract player information from each row
         const assists = $(element).find('td:nth-child(11)').text().trim();
         const blocks = $(element).find('td:nth-child(13)').text().trim();
@@ -45,16 +45,26 @@ async function scrapeSchedule(url) {
         const threePercent = $(element).find('td:nth-child(6)').text().trim();
 
         const firstName = name.split(', ')[1];
-        const lastName = name.split (', ')[0];
-        
+        const lastName = name.split(', ')[0];
+
         // Create a player object and push it to the players array
-        stats.push({ assists, blocks, firstName, lastName, minutes, points, rebounds, steals, fgPercent, threePercent });
+        stats.push({
+          assists,
+          blocks,
+          firstName,
+          lastName,
+          minutes,
+          points,
+          rebounds,
+          steals,
+          fgPercent,
+          threePercent,
+        });
       }
     });
 
     // Return the array of players
     return stats;
-
   } catch (error) {
     console.error('Error fetching or parsing data:', error);
     return null;

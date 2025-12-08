@@ -1,11 +1,11 @@
 import { Redis } from '@upstash/redis';
 import axios from 'axios';
-import https from "https";
+import https from 'https';
 import * as cheerio from 'cheerio';
 
 // 12 hour cache
 const CACHE_IN_SECONDS = 43200;
-const CACHE_NAME = 'etsu-schedule-cache'
+const CACHE_NAME = 'etsu-schedule-cache';
 
 // https://docs.upstash.com/redis/sdks/javascriptsdk/advanced#keepalive
 const redisClient = Redis.fromEnv({
@@ -32,23 +32,56 @@ async function scrapeSchedule(url) {
     // Iterate over each row (player) in the table
     scheduleList.find('li.sidearm-schedule-game').each((index, element) => {
       // Extract game information from each row
-      const opponent = $(element).find('div.sidearm-schedule-game-opponent div.sidearm-schedule-game-opponent-name a').text().trim();
-      const vsat = $(element).find('div.sidearm-schedule-game-opponent-text span.sidearm-schedule-game-conference-vs span').text().trim();
-      const date = $(element).find('div.sidearm-schedule-game-opponent-date span:nth-child(1)').text().trim();
-      const time = $(element).find('div.sidearm-schedule-game-opponent-date span:nth-child(2)').text().trim();
-      const result = $(element).find('div.sidearm-schedule-game-details div.sidearm-schedule-game-result span:nth-child(2)').text().trim();
-      const score = $(element).find('div.sidearm-schedule-game-details div.sidearm-schedule-game-result span:nth-child(3)').text().trim();
-      const opponentLogo = $(element).find('div.sidearm-schedule-game-opponent-logo img').attr('data-src');
-      
+      const opponent = $(element)
+        .find('div.sidearm-schedule-game-opponent div.sidearm-schedule-game-opponent-name a')
+        .text()
+        .trim();
+      const vsat = $(element)
+        .find(
+          'div.sidearm-schedule-game-opponent-text span.sidearm-schedule-game-conference-vs span'
+        )
+        .text()
+        .trim();
+      const date = $(element)
+        .find('div.sidearm-schedule-game-opponent-date span:nth-child(1)')
+        .text()
+        .trim();
+      const time = $(element)
+        .find('div.sidearm-schedule-game-opponent-date span:nth-child(2)')
+        .text()
+        .trim();
+      const result = $(element)
+        .find(
+          'div.sidearm-schedule-game-details div.sidearm-schedule-game-result span:nth-child(2)'
+        )
+        .text()
+        .trim();
+      const score = $(element)
+        .find(
+          'div.sidearm-schedule-game-details div.sidearm-schedule-game-result span:nth-child(3)'
+        )
+        .text()
+        .trim();
+      const opponentLogo = $(element)
+        .find('div.sidearm-schedule-game-opponent-logo img')
+        .attr('data-src');
+
       // Create a player object and push it to the players array
       if (opponent !== '') {
-        schedule.push({ opponent, vsat, date, time, result, score, opponentLogo });
+        schedule.push({
+          opponent,
+          vsat,
+          date,
+          time,
+          result,
+          score,
+          opponentLogo,
+        });
       }
     });
 
     // Return the array of players
     return schedule;
-
   } catch (error) {
     console.error('Error fetching or parsing data:', error);
     return null;

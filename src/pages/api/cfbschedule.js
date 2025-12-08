@@ -1,7 +1,7 @@
 // import { NextApiRequest, NextApiResponse } from 'next';
-import { Redis } from "@upstash/redis";
-import https from "https";
-import axios from "axios";
+import { Redis } from '@upstash/redis';
+import https from 'https';
+import axios from 'axios';
 // import getStats from '../../lib/stats';
 
 // 5 day cache
@@ -15,26 +15,26 @@ const redisClient = Redis.fromEnv({
 const getSchedule = async ({ year, teams }) => {
   const apiKey = process.env.CFB_DATA_API_KEY;
 
-  const schedule = await Promise.all(teams.map(async (team) => {
-    const gamesRes = await axios.get(`https://api.collegefootballdata.com/games`, {
-      params: { year, team },
-      headers: {
-        'Authorization': `Bearer ${apiKey}`
-      }
-    });
-    return { team, games: gamesRes.data };
-  }));
+  const schedule = await Promise.all(
+    teams.map(async (team) => {
+      const gamesRes = await axios.get(`https://api.collegefootballdata.com/games`, {
+        params: { year, team },
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+        },
+      });
+      return { team, games: gamesRes.data };
+    })
+  );
 
   return schedule;
-}
+};
 
 const handler = async (req, res) => {
   const { method } = req;
   switch (method) {
     case 'POST':
-
       try {
-
         const year = parseInt(req.query.year) || 2025;
         const teams = req.body.teams || [];
         if (teams?.length === 0) {
@@ -50,9 +50,10 @@ const handler = async (req, res) => {
         }
 
         const games = await getSchedule({ year, teams });
-        await redisClient.set(cacheKey, JSON.stringify(games), { ex: CACHE_IN_SECONDS });
+        await redisClient.set(cacheKey, JSON.stringify(games), {
+          ex: CACHE_IN_SECONDS,
+        });
         res.send({ type: 'api', data: games });
-
       } catch (error) {
         console.error('Error fetching CFB schedule:', error);
         res.status(500).json({ error: 'Internal Server Error' });

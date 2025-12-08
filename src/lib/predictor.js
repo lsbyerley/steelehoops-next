@@ -24,9 +24,7 @@ function erfc(x) {
                           (0.27886807 +
                             t *
                               (-1.13520398 +
-                                t *
-                                  (1.48851587 +
-                                    t * (-0.82215223 + t * 0.17087277))))))))
+                                t * (1.48851587 + t * (-0.82215223 + t * 0.17087277))))))))
     );
   return x >= 0 ? r : 2 - r;
 }
@@ -64,29 +62,22 @@ const predictor = (
 
   // AWAY EXPECTED OUTPUT
   const awayExpectedOutputNeutral =
-    ((awayOffensiveEfficiency + homeDefensiveEfficiency - D1AverageEfficiency) /
-      100) *
+    ((awayOffensiveEfficiency + homeDefensiveEfficiency - D1AverageEfficiency) / 100) *
     expectedTempo;
   const awayExpectedOutput = awayExpectedOutputNeutral - homeCourtAdvantage / 2;
 
   // HOME EXPECTED OUTPUT
   const homeExpectedOutputNeutral =
-    ((homeOffensiveEfficiency + awayDefensiveEfficiency - D1AverageEfficiency) /
-      100) *
+    ((homeOffensiveEfficiency + awayDefensiveEfficiency - D1AverageEfficiency) / 100) *
     expectedTempo;
   const homeExpectedOutput = homeExpectedOutputNeutral + homeCourtAdvantage / 2;
 
   // AWAY POINT DIFFERENTIAL AND WIN PROBABILITY
   //const awayPointDiffNeutral = ((awayAdjEM - homeAdjEM) * (awayTempo + homeTempo) / 200)
   //const awayPointDiff = awayPointDiffNeutral - (homeCourtAdvantage/2)
-  const awayPointDiffNeutral =
-    awayExpectedOutputNeutral - homeExpectedOutputNeutral;
+  const awayPointDiffNeutral = awayExpectedOutputNeutral - homeExpectedOutputNeutral;
   const awayPointDiff = awayExpectedOutput - homeExpectedOutput;
-  const awayWinProbability = cumulativeDistribution(
-    awayPointDiff,
-    0,
-    standardDeviation
-  );
+  const awayWinProbability = cumulativeDistribution(awayPointDiff, 0, standardDeviation);
   const awayWinProbabilityNeutral = cumulativeDistribution(
     awayPointDiffNeutral,
     0,
@@ -96,14 +87,9 @@ const predictor = (
   // HOME POINT DIFFERENTIAL AND WIN PROBABILITY
   //const homePointDiffNeutral = ((homeAdjEM - awayAdjEM) * (awayTempo + homeTempo) / 200)
   //const homePointDiff = homePointDiffNeutral + (homeCourtAdvantage/2)
-  const homePointDiffNeutral =
-    homeExpectedOutputNeutral - awayExpectedOutputNeutral;
+  const homePointDiffNeutral = homeExpectedOutputNeutral - awayExpectedOutputNeutral;
   const homePointDiff = homeExpectedOutput - awayExpectedOutput;
-  const homeWinProbability = cumulativeDistribution(
-    homePointDiff,
-    0,
-    standardDeviation
-  );
+  const homeWinProbability = cumulativeDistribution(homePointDiff, 0, standardDeviation);
   const homeWinProbabilityNeutral = cumulativeDistribution(
     homePointDiffNeutral,
     0,
@@ -126,14 +112,7 @@ const predictor = (
   }
   expectedTempo = round(expectedTempo, 1);
 
-  let total,
-    awayTotal,
-    awayLine,
-    awayWinPerc,
-    homeTotal,
-    homeLine,
-    homeWinPerc,
-    shFave;
+  let total, awayTotal, awayLine, awayWinPerc, homeTotal, homeLine, homeWinPerc, shFave;
   if (neutralSite) {
     total = round(awayExpectedOutputNeutral + homeExpectedOutputNeutral, 1);
     awayTotal = round(awayExpectedOutputNeutral, 1);
@@ -143,8 +122,7 @@ const predictor = (
     homeLine = round(homeExpectedOutputNeutral - awayExpectedOutputNeutral, 1);
     homeWinPerc = round(homeWinProbabilityNeutral * 100, 1);
 
-    shFave =
-      homeExpectedOutputNeutral > awayExpectedOutputNeutral ? 'home' : 'away';
+    shFave = homeExpectedOutputNeutral > awayExpectedOutputNeutral ? 'home' : 'away';
   } else {
     total = round(awayExpectedOutput + homeExpectedOutput, 1);
     awayTotal = round(awayExpectedOutput, 1);

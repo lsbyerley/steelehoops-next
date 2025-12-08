@@ -1,15 +1,15 @@
-import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export const getNormalizedWeek = (game) => {
-  if (game.seasonType === "regular") {
+  if (game.seasonType === 'regular') {
     return game.week; // weeks 1–16
   }
-  if (game.seasonType === "postseason") {
+  if (game.seasonType === 'postseason') {
     // shift postseason weeks to follow after regular season
     return 16 + game.week;
   }
@@ -23,9 +23,9 @@ export const normalizeScheduleWeeks = (schedule) => {
   schedule.data.forEach((teamData) => {
     let postCounter = 0;
     teamData.games.forEach((game) => {
-      if (game.seasonType === "regular") {
+      if (game.seasonType === 'regular') {
         game.normalizedWeek = game.week;
-      } else if (game.seasonType === "postseason") {
+      } else if (game.seasonType === 'postseason') {
         postCounter += 1;
         game.normalizedWeek = 16 + postCounter;
         if (postCounter > maxPostWeeks) {
@@ -46,7 +46,9 @@ export const normalizeScheduleWeeks = (schedule) => {
 
 // get AP rank of opponent for given week
 export const getTeamRank = (teamName, game, seasonPolls) => {
-  let pollWeek = seasonPolls.data.find(p => p.week === game.week && p.seasonType === game.seasonType);
+  let pollWeek = seasonPolls.data.find(
+    (p) => p.week === game.week && p.seasonType === game.seasonType
+  );
   if (!pollWeek) {
     // fallback to latest available poll
     pollWeek = seasonPolls.data.sort((a, b) => {
@@ -55,12 +57,10 @@ export const getTeamRank = (teamName, game, seasonPolls) => {
       return b.week - a.week;
     })[0];
   }
-  const polls = pollWeek?.polls?.find(p => p.poll === "AP Top 25");
-  
+  const polls = pollWeek?.polls?.find((p) => p.poll === 'AP Top 25');
+
   if (!polls) return null;
-  const ranking = polls.ranks.find(
-    (entry) => entry.school === teamName
-  );
+  const ranking = polls.ranks.find((entry) => entry.school === teamName);
   return ranking ? ranking.rank : null;
 };
 
