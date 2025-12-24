@@ -54,31 +54,32 @@ const WeeklyGrid = ({ schedule, sitPlan, polls, franchiseTeam }) => {
           {/* Regular Season */}
           {regularWeeks.map((week) => {
             const weekLabel = week === 15 ? `Champ Week` : `Week ${week}`;
-            return renderRow(
+            return renderRow({
               weekLabel,
               schedule,
-              week,
+              weekIndex: week,
               polls,
               sitPlan,
               teamsSat,
               franchiseTeam,
-              false
-            );
+              isPostseason: false
+            });
           })}
 
           {/* Postseason */}
           {Array.from({ length: maxPostWeeks }, (_, i) => {
-            const weekLabel = i === 0 ? `Bowls or CFP` : `CFP`;
-            return renderRow(
+            const weekIndex = regularWeeks.length + i + 1;
+            const weekLabel = weekIndex === 17 ? `Bowls or CFP` : `CFP`;
+            return renderRow({
               weekLabel,
               schedule,
-              i + 1,
+              weekIndex,
               polls,
               sitPlan,
               teamsSat,
               franchiseTeam,
-              true
-            );
+              isPostseason: true
+            });
           })}
         </tbody>
       </table>
@@ -94,7 +95,7 @@ const WeeklyGrid = ({ schedule, sitPlan, polls, franchiseTeam }) => {
   );
 };
 
-const renderRow = (
+const renderRow = ({
   weekLabel,
   schedule,
   weekIndex,
@@ -102,8 +103,8 @@ const renderRow = (
   sitPlan,
   teamsSat,
   franchiseTeam,
-  isPostseason = false
-) => (
+  isPostseason = false,
+}) => (
   <tr key={weekLabel}>
     <td className="border p-2 font-bold">{weekLabel}</td>
     {schedule.data.map((teamData) => {
@@ -113,7 +114,7 @@ const renderRow = (
         game = teamData.games.find((g) => g.seasonType === 'regular' && g.week === weekIndex);
       } else {
         const postseasonGames = teamData.games.filter((g) => g.seasonType === 'postseason');
-        game = postseasonGames[weekIndex - 1] || null; // 0-based index
+        game = postseasonGames[weekIndex - 17] || null; // 0-based index
       }
 
       if (!game) {

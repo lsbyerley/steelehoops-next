@@ -4,7 +4,7 @@ import WeeklyGrid from '../components/WeeklyGrid';
 const API_SCHEDULE_URL = '/api/cfbschedule';
 const API_POLLS_URL = '/api/cfbpolls';
 
-const teamData = [
+const myTeams = [
   { name: 'Michigan', sitWeek: 2 },
   { name: 'Arizona State', isFranchise: true },
   { name: 'South Carolina', sitWeek: 12 },
@@ -12,8 +12,10 @@ const teamData = [
   { name: 'Oregon State', sitWeek: 4 },
   { name: 'Pittsburgh', sitWeek: 7 },
   { name: 'Vanderbilt', sitWeek: 6 },
-  { name: 'Southern Miss', sitWeek: null },
+  { name: 'Southern Miss', sitWeek: 17 },
 ];
+
+const teamData = myTeams;
 
 // For backwards compatibility with the rest of the code:
 const teams = teamData.map((t) => t.name);

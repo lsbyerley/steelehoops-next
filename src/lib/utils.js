@@ -66,6 +66,7 @@ export const getTeamRank = (teamName, game, seasonPolls) => {
 
 // calculate points for a single game
 export const calculateGamePoints = (game, team, week, sitPlan, polls, franchiseTeam) => {
+  // console.log('LOG: game week', game, week)
   const isHome = game.homeTeam === team;
   const teamPoints = isHome ? game.homePoints : game.awayPoints;
   const oppPoints = isHome ? game.awayPoints : game.homePoints;
@@ -102,6 +103,6 @@ export const calculateGamePoints = (game, team, week, sitPlan, polls, franchiseT
 // calculate total season points for a team
 export const calculateSeasonPoints = (teamData, sitPlan, polls, franchiseTeam) => {
   return teamData.games.reduce((sum, game) => {
-    return sum + calculateGamePoints(game, teamData.team, game.week, sitPlan, polls, franchiseTeam);
+    return sum + calculateGamePoints(game, teamData.team, getNormalizedWeek(game), sitPlan, polls, franchiseTeam);
   }, 0);
 };
