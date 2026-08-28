@@ -1,0 +1,1387 @@
+{
+  "type": "api",
+  "rankings": [
+    {
+      "team": "Notre Dame",
+      "rating": "29.0",
+      "wins": "10.8",
+      "losses": "1.2",
+      "confWins": "--",
+      "confLosses": "--",
+      "winConf": "--",
+      "taken": true
+    },
+    {
+      "team": "Texas Tech",
+      "rating": "24.0",
+      "wins": "10.6",
+      "losses": "1.4",
+      "confWins": "7.7",
+      "confLosses": "1.3",
+      "winConf": "44%",
+      "taken": true,
+      "myTeam": true
+    },
+    {
+      "team": "Miami",
+      "rating": "25.1",
+      "wins": "10.3",
+      "losses": "1.7",
+      "confWins": "7.9",
+      "confLosses": "1.1",
+      "winConf": "48%",
+      "taken": true
+    },
+    {
+      "team": "Oregon",
+      "rating": "30.1",
+      "wins": "10.1",
+      "losses": "1.9",
+      "confWins": "7.2",
+      "confLosses": "1.8",
+      "winConf": "24%",
+      "taken": true
+    },
+    {
+      "team": "Indiana",
+      "rating": "28.6",
+      "wins": "10.1",
+      "losses": "1.9",
+      "confWins": "7.1",
+      "confLosses": "1.9",
+      "winConf": "22%",
+      "taken": true
+    },
+    {
+      "team": "Ohio St",
+      "rating": "32.1",
+      "wins": "9.7",
+      "losses": "2.3",
+      "confWins": "7.2",
+      "confLosses": "1.8",
+      "winConf": "31%",
+      "taken": true
+    },
+    {
+      "team": "Georgia",
+      "rating": "28.1",
+      "wins": "9.7",
+      "losses": "2.3",
+      "confWins": "6.8",
+      "confLosses": "2.2",
+      "winConf": "23%",
+      "taken": true
+    },
+    {
+      "team": "Texas",
+      "rating": "28.1",
+      "wins": "8.9",
+      "losses": "3.1",
+      "confWins": "6.5",
+      "confLosses": "2.5",
+      "winConf": "20%",
+      "taken": true
+    },
+    {
+      "team": "Penn St",
+      "rating": "16.7",
+      "wins": "8.8",
+      "losses": "3.2",
+      "confWins": "6.0",
+      "confLosses": "3.0",
+      "winConf": "5%",
+      "taken": true
+    },
+    {
+      "team": "BYU",
+      "rating": "15.8",
+      "wins": "8.6",
+      "losses": "3.4",
+      "confWins": "6.4",
+      "confLosses": "2.6",
+      "winConf": "14%",
+      "taken": true
+    },
+    {
+      "team": "SMU",
+      "rating": "14.0",
+      "wins": "8.6",
+      "losses": "3.4",
+      "confWins": "6.4",
+      "confLosses": "2.6",
+      "winConf": "13%",
+      "taken": true
+    },
+    {
+      "team": "Utah",
+      "rating": "13.4",
+      "wins": "8.5",
+      "losses": "3.5",
+      "confWins": "5.9",
+      "confLosses": "3.1",
+      "winConf": "10%",
+      "taken": true
+    },
+    {
+      "team": "J Madison",
+      "rating": "-1.2",
+      "wins": "8.5",
+      "losses": "3.5",
+      "confWins": "5.8",
+      "confLosses": "2.2",
+      "winConf": "24%",
+      "taken": true
+    },
+    {
+      "team": "North Dakota State",
+      "rating": "-2.5",
+      "wins": "8.5",
+      "losses": "3.5",
+      "confWins": "6.0",
+      "confLosses": "3.0",
+      "winConf": "22%",
+      "taken": true
+    },
+    {
+      "team": "Alabama",
+      "rating": "21.7",
+      "wins": "8.4",
+      "losses": "3.6",
+      "confWins": "5.6",
+      "confLosses": "3.4",
+      "winConf": "9%",
+      "taken": true
+    },
+    {
+      "team": "Boise St",
+      "rating": "8.3",
+      "wins": "8.4",
+      "losses": "3.6",
+      "confWins": "5.1",
+      "confLosses": "1.9",
+      "winConf": "35%",
+      "taken": true,
+      "myTeam": true
+    },
+    {
+      "team": "LSU",
+      "rating": "22.0",
+      "wins": "8.3",
+      "losses": "3.7",
+      "confWins": "5.6",
+      "confLosses": "3.4",
+      "winConf": "9%",
+      "taken": true
+    },
+    {
+      "team": "Texas A&M",
+      "rating": "22.0",
+      "wins": "8.2",
+      "losses": "3.8",
+      "confWins": "5.4",
+      "confLosses": "3.6",
+      "winConf": "8%",
+      "taken": true
+    },
+    {
+      "team": "USC",
+      "rating": "20.6",
+      "wins": "8.2",
+      "losses": "3.8",
+      "confWins": "5.3",
+      "confLosses": "3.7",
+      "winConf": "5%",
+      "taken": false
+    },
+    {
+      "team": "Mississippi",
+      "rating": "21.9",
+      "wins": "8.0",
+      "losses": "4.0",
+      "confWins": "5.3",
+      "confLosses": "3.7",
+      "winConf": "8%",
+      "taken": false
+    },
+    {
+      "team": "Kansas St",
+      "rating": "10.1",
+      "wins": "8.0",
+      "losses": "4.0",
+      "confWins": "5.4",
+      "confLosses": "3.6",
+      "winConf": "6%",
+      "taken": false
+    },
+    {
+      "team": "UNLV",
+      "rating": "-1.0",
+      "wins": "8.0",
+      "losses": "4.0",
+      "confWins": "5.5",
+      "confLosses": "2.5",
+      "winConf": "23%",
+      "taken": true
+    },
+    {
+      "team": "New Mexico",
+      "rating": "-1.9",
+      "wins": "8.0",
+      "losses": "4.0",
+      "confWins": "5.4",
+      "confLosses": "2.6",
+      "winConf": "23%",
+      "taken": false
+    },
+    {
+      "team": "S Florida",
+      "rating": "-2.6",
+      "wins": "8.0",
+      "losses": "4.0",
+      "confWins": "4.6",
+      "confLosses": "3.4",
+      "winConf": "8%",
+      "taken": false
+    },
+    {
+      "team": "Liberty",
+      "rating": "-8.5",
+      "wins": "8.0",
+      "losses": "4.0",
+      "confWins": "5.4",
+      "confLosses": "2.6",
+      "winConf": "26%",
+      "taken": true
+    },
+    {
+      "team": "Michigan",
+      "rating": "20.0",
+      "wins": "7.9",
+      "losses": "4.1",
+      "confWins": "5.4",
+      "confLosses": "3.6",
+      "winConf": "5%",
+      "taken": false
+    },
+    {
+      "team": "Washington",
+      "rating": "16.9",
+      "wins": "7.9",
+      "losses": "4.1",
+      "confWins": "5.1",
+      "confLosses": "3.9",
+      "winConf": "3%",
+      "taken": false
+    },
+    {
+      "team": "Louisville",
+      "rating": "12.8",
+      "wins": "7.9",
+      "losses": "4.1",
+      "confWins": "6.1",
+      "confLosses": "2.9",
+      "winConf": "10%",
+      "taken": false
+    },
+    {
+      "team": "Houston",
+      "rating": "10.9",
+      "wins": "7.9",
+      "losses": "4.1",
+      "confWins": "5.2",
+      "confLosses": "3.8",
+      "winConf": "6%",
+      "taken": false
+    },
+    {
+      "team": "Oklahoma",
+      "rating": "22.5",
+      "wins": "7.8",
+      "losses": "4.2",
+      "confWins": "5.4",
+      "confLosses": "3.6",
+      "winConf": "8%",
+      "taken": true
+    },
+    {
+      "team": "Navy",
+      "rating": "0.2",
+      "wins": "7.8",
+      "losses": "4.2",
+      "confWins": "5.7",
+      "confLosses": "2.3",
+      "winConf": "21%",
+      "taken": false
+    },
+    {
+      "team": "Pittsburgh",
+      "rating": "9.7",
+      "wins": "7.7",
+      "losses": "4.3",
+      "confWins": "5.1",
+      "confLosses": "3.9",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "Virginia",
+      "rating": "8.4",
+      "wins": "7.7",
+      "losses": "4.3",
+      "confWins": "5.2",
+      "confLosses": "3.8",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "Iowa",
+      "rating": "13.4",
+      "wins": "7.6",
+      "losses": "4.4",
+      "confWins": "4.8",
+      "confLosses": "4.2",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Clemson",
+      "rating": "12.3",
+      "wins": "7.6",
+      "losses": "4.4",
+      "confWins": "4.9",
+      "confLosses": "3.1",
+      "winConf": "6%",
+      "taken": false
+    },
+    {
+      "team": "Army",
+      "rating": "-2.0",
+      "wins": "7.6",
+      "losses": "4.4",
+      "confWins": "4.9",
+      "confLosses": "3.1",
+      "winConf": "13%",
+      "taken": false
+    },
+    {
+      "team": "Toledo",
+      "rating": "-8.4",
+      "wins": "7.6",
+      "losses": "4.4",
+      "confWins": "5.5",
+      "confLosses": "2.5",
+      "winConf": "20%",
+      "taken": true
+    },
+    {
+      "team": "Tennessee",
+      "rating": "17.4",
+      "wins": "7.5",
+      "losses": "4.5",
+      "confWins": "4.8",
+      "confLosses": "4.2",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "UTSA",
+      "rating": "-0.2",
+      "wins": "7.5",
+      "losses": "4.5",
+      "confWins": "5.4",
+      "confLosses": "2.6",
+      "winConf": "15%",
+      "taken": false
+    },
+    {
+      "team": "San Diego St",
+      "rating": "3.1",
+      "wins": "7.4",
+      "losses": "4.6",
+      "confWins": "4.2",
+      "confLosses": "2.8",
+      "winConf": "18%",
+      "taken": false
+    },
+    {
+      "team": "Old Dominion",
+      "rating": "-5.0",
+      "wins": "7.4",
+      "losses": "4.6",
+      "confWins": "5.2",
+      "confLosses": "2.8",
+      "winConf": "16%",
+      "taken": false
+    },
+    {
+      "team": "Arizona",
+      "rating": "9.2",
+      "wins": "7.2",
+      "losses": "4.8",
+      "confWins": "4.6",
+      "confLosses": "4.4",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "Fresno St",
+      "rating": "2.0",
+      "wins": "7.2",
+      "losses": "4.8",
+      "confWins": "3.9",
+      "confLosses": "3.1",
+      "winConf": "14%",
+      "taken": false
+    },
+    {
+      "team": "Memphis",
+      "rating": "-2.2",
+      "wins": "7.2",
+      "losses": "4.8",
+      "confWins": "4.9",
+      "confLosses": "3.1",
+      "winConf": "11%",
+      "taken": false
+    },
+    {
+      "team": "Air Force",
+      "rating": "-6.3",
+      "wins": "7.2",
+      "losses": "4.8",
+      "confWins": "4.9",
+      "confLosses": "3.1",
+      "winConf": "12%",
+      "taken": false
+    },
+    {
+      "team": "NC State",
+      "rating": "5.7",
+      "wins": "7.1",
+      "losses": "4.9",
+      "confWins": "4.9",
+      "confLosses": "4.1",
+      "winConf": "3%",
+      "taken": false
+    },
+    {
+      "team": "Marshall",
+      "rating": "-8.1",
+      "wins": "7.1",
+      "losses": "4.9",
+      "confWins": "4.7",
+      "confLosses": "3.3",
+      "winConf": "8%",
+      "taken": false
+    },
+    {
+      "team": "Miami OH",
+      "rating": "-9.6",
+      "wins": "7.1",
+      "losses": "4.9",
+      "confWins": "5.2",
+      "confLosses": "2.8",
+      "winConf": "17%",
+      "taken": false
+    },
+    {
+      "team": "Louisiana",
+      "rating": "-10.3",
+      "wins": "7.1",
+      "losses": "4.9",
+      "confWins": "4.7",
+      "confLosses": "3.3",
+      "winConf": "8%",
+      "taken": false
+    },
+    {
+      "team": "Jacksonville St",
+      "rating": "-11.0",
+      "wins": "7.1",
+      "losses": "4.9",
+      "confWins": "5.0",
+      "confLosses": "3.0",
+      "winConf": "17%",
+      "taken": false
+    },
+    {
+      "team": "TCU",
+      "rating": "9.1",
+      "wins": "7.0",
+      "losses": "5.0",
+      "confWins": "4.4",
+      "confLosses": "4.6",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "Virginia Tech",
+      "rating": "8.6",
+      "wins": "7.0",
+      "losses": "5.0",
+      "confWins": "4.6",
+      "confLosses": "4.4",
+      "winConf": "3%",
+      "taken": false
+    },
+    {
+      "team": "E Carolina",
+      "rating": "-4.8",
+      "wins": "7.0",
+      "losses": "5.0",
+      "confWins": "4.9",
+      "confLosses": "3.1",
+      "winConf": "9%",
+      "taken": false
+    },
+    {
+      "team": "Florida",
+      "rating": "16.7",
+      "wins": "6.9",
+      "losses": "5.1",
+      "confWins": "4.3",
+      "confLosses": "4.7",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "Illinois",
+      "rating": "8.9",
+      "wins": "6.9",
+      "losses": "5.1",
+      "confWins": "4.3",
+      "confLosses": "4.7",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Tulane",
+      "rating": "-3.1",
+      "wins": "6.9",
+      "losses": "5.1",
+      "confWins": "4.8",
+      "confLosses": "3.2",
+      "winConf": "10%",
+      "taken": false
+    },
+    {
+      "team": "Hawai'i",
+      "rating": "-7.2",
+      "wins": "6.9",
+      "losses": "5.1",
+      "confWins": "4.7",
+      "confLosses": "3.3",
+      "winConf": "11%",
+      "taken": false
+    },
+    {
+      "team": "Troy",
+      "rating": "-8.0",
+      "wins": "6.9",
+      "losses": "5.1",
+      "confWins": "4.7",
+      "confLosses": "3.3",
+      "winConf": "10%",
+      "taken": false
+    },
+    {
+      "team": "W Kentucky",
+      "rating": "-8.6",
+      "wins": "6.9",
+      "losses": "5.1",
+      "confWins": "5.4",
+      "confLosses": "2.6",
+      "winConf": "26%",
+      "taken": false
+    },
+    {
+      "team": "Texas St",
+      "rating": "0.5",
+      "wins": "6.8",
+      "losses": "5.2",
+      "confWins": "3.8",
+      "confLosses": "3.2",
+      "winConf": "12%",
+      "taken": false
+    },
+    {
+      "team": "W Michigan",
+      "rating": "-8.6",
+      "wins": "6.8",
+      "losses": "5.2",
+      "confWins": "5.1",
+      "confLosses": "2.9",
+      "winConf": "18%",
+      "taken": false
+    },
+    {
+      "team": "Auburn",
+      "rating": "13.7",
+      "wins": "6.6",
+      "losses": "5.4",
+      "confWins": "3.9",
+      "confLosses": "5.1",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Ohio",
+      "rating": "-12.3",
+      "wins": "6.6",
+      "losses": "5.4",
+      "confWins": "4.7",
+      "confLosses": "3.3",
+      "winConf": "11%",
+      "taken": false
+    },
+    {
+      "team": "Missouri",
+      "rating": "14.6",
+      "wins": "6.5",
+      "losses": "5.5",
+      "confWins": "4.0",
+      "confLosses": "5.0",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Arizona St",
+      "rating": "8.3",
+      "wins": "6.5",
+      "losses": "5.5",
+      "confWins": "4.5",
+      "confLosses": "4.5",
+      "winConf": "3%",
+      "taken": false
+    },
+    {
+      "team": "Wisconsin",
+      "rating": "7.7",
+      "wins": "6.5",
+      "losses": "5.5",
+      "confWins": "4.5",
+      "confLosses": "4.5",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "South Carolina",
+      "rating": "13.0",
+      "wins": "6.3",
+      "losses": "5.7",
+      "confWins": "3.9",
+      "confLosses": "5.1",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "California",
+      "rating": "4.7",
+      "wins": "6.3",
+      "losses": "5.7",
+      "confWins": "4.2",
+      "confLosses": "4.8",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Nebraska",
+      "rating": "8.2",
+      "wins": "6.2",
+      "losses": "5.8",
+      "confWins": "3.4",
+      "confLosses": "5.6",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "UCLA",
+      "rating": "7.4",
+      "wins": "6.2",
+      "losses": "5.8",
+      "confWins": "4.1",
+      "confLosses": "4.9",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Oklahoma St",
+      "rating": "6.2",
+      "wins": "6.2",
+      "losses": "5.8",
+      "confWins": "4.3",
+      "confLosses": "4.7",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Georgia Tech",
+      "rating": "5.7",
+      "wins": "6.2",
+      "losses": "5.8",
+      "confWins": "4.1",
+      "confLosses": "3.9",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Kennesaw St",
+      "rating": "-13.7",
+      "wins": "6.2",
+      "losses": "5.8",
+      "confWins": "4.2",
+      "confLosses": "3.8",
+      "winConf": "12%",
+      "taken": false
+    },
+    {
+      "team": "Florida Intl",
+      "rating": "-14.7",
+      "wins": "6.2",
+      "losses": "5.8",
+      "confWins": "4.3",
+      "confLosses": "3.7",
+      "winConf": "10%",
+      "taken": false
+    },
+    {
+      "team": "Minnesota",
+      "rating": "7.5",
+      "wins": "6.1",
+      "losses": "5.9",
+      "confWins": "3.6",
+      "confLosses": "5.4",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "West Virginia",
+      "rating": "4.3",
+      "wins": "6.1",
+      "losses": "5.9",
+      "confWins": "3.8",
+      "confLosses": "5.2",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "App State",
+      "rating": "-11.2",
+      "wins": "6.1",
+      "losses": "5.9",
+      "confWins": "4.0",
+      "confLosses": "4.0",
+      "winConf": "5%",
+      "taken": false
+    },
+    {
+      "team": "Arkansas St",
+      "rating": "-12.2",
+      "wins": "6.1",
+      "losses": "5.9",
+      "confWins": "4.4",
+      "confLosses": "3.6",
+      "winConf": "6%",
+      "taken": false
+    },
+    {
+      "team": "C Michigan",
+      "rating": "-12.8",
+      "wins": "6.1",
+      "losses": "5.9",
+      "confWins": "4.5",
+      "confLosses": "3.5",
+      "winConf": "10%",
+      "taken": false
+    },
+    {
+      "team": "Kansas",
+      "rating": "5.0",
+      "wins": "6.0",
+      "losses": "6.0",
+      "confWins": "3.7",
+      "confLosses": "5.3",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "UCF",
+      "rating": "2.9",
+      "wins": "6.0",
+      "losses": "6.0",
+      "confWins": "3.8",
+      "confLosses": "5.2",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Florida Atlantic",
+      "rating": "-7.4",
+      "wins": "6.0",
+      "losses": "6.0",
+      "confWins": "3.6",
+      "confLosses": "4.4",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "Louisiana Tech",
+      "rating": "-9.6",
+      "wins": "6.0",
+      "losses": "6.0",
+      "confWins": "4.5",
+      "confLosses": "3.5",
+      "winConf": "8%",
+      "taken": false
+    },
+    {
+      "team": "Delaware",
+      "rating": "-12.3",
+      "wins": "6.0",
+      "losses": "6.0",
+      "confWins": "4.4",
+      "confLosses": "3.6",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "E Michigan",
+      "rating": "-14.1",
+      "wins": "6.0",
+      "losses": "6.0",
+      "confWins": "4.3",
+      "confLosses": "3.7",
+      "winConf": "8%",
+      "taken": false
+    },
+    {
+      "team": "Vanderbilt",
+      "rating": "9.6",
+      "wins": "5.9",
+      "losses": "6.1",
+      "confWins": "3.3",
+      "confLosses": "5.7",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Florida St",
+      "rating": "7.0",
+      "wins": "5.9",
+      "losses": "6.1",
+      "confWins": "3.5",
+      "confLosses": "4.5",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Baylor",
+      "rating": "4.5",
+      "wins": "5.9",
+      "losses": "6.1",
+      "confWins": "3.7",
+      "confLosses": "5.3",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Washington St",
+      "rating": "-0.2",
+      "wins": "5.9",
+      "losses": "6.1",
+      "confWins": "3.5",
+      "confLosses": "3.5",
+      "winConf": "11%",
+      "taken": false
+    },
+    {
+      "team": "Wake Forest",
+      "rating": "2.7",
+      "wins": "5.8",
+      "losses": "6.2",
+      "confWins": "3.4",
+      "confLosses": "5.6",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Duke",
+      "rating": "2.4",
+      "wins": "5.8",
+      "losses": "6.2",
+      "confWins": "3.9",
+      "confLosses": "5.1",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Wyoming",
+      "rating": "-12.0",
+      "wins": "5.8",
+      "losses": "6.2",
+      "confWins": "3.5",
+      "confLosses": "4.5",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "Buffalo",
+      "rating": "-16.5",
+      "wins": "5.8",
+      "losses": "6.2",
+      "confWins": "3.8",
+      "confLosses": "4.2",
+      "winConf": "5%",
+      "taken": false
+    },
+    {
+      "team": "N Texas",
+      "rating": "-8.5",
+      "wins": "5.7",
+      "losses": "6.3",
+      "confWins": "4.2",
+      "confLosses": "3.8",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "S Alabama",
+      "rating": "-12.5",
+      "wins": "5.7",
+      "losses": "6.3",
+      "confWins": "4.0",
+      "confLosses": "4.0",
+      "winConf": "5%",
+      "taken": false
+    },
+    {
+      "team": "Tulsa",
+      "rating": "-9.7",
+      "wins": "5.6",
+      "losses": "6.4",
+      "confWins": "3.6",
+      "confLosses": "4.4",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Northwestern",
+      "rating": "4.6",
+      "wins": "5.5",
+      "losses": "6.5",
+      "confWins": "2.9",
+      "confLosses": "6.1",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Temple",
+      "rating": "-10.8",
+      "wins": "5.5",
+      "losses": "6.5",
+      "confWins": "3.6",
+      "confLosses": "4.4",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "UConn",
+      "rating": "-11.8",
+      "wins": "5.4",
+      "losses": "6.6",
+      "confWins": "--",
+      "confLosses": "--",
+      "winConf": "--",
+      "taken": false
+    },
+    {
+      "team": "Maryland",
+      "rating": "2.6",
+      "wins": "5.3",
+      "losses": "6.7",
+      "confWins": "3.2",
+      "confLosses": "5.8",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Cincinnati",
+      "rating": "0.6",
+      "wins": "5.2",
+      "losses": "6.8",
+      "confWins": "2.8",
+      "confLosses": "6.2",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Utah St",
+      "rating": "-3.1",
+      "wins": "5.2",
+      "losses": "6.8",
+      "confWins": "3.0",
+      "confLosses": "4.0",
+      "winConf": "6%",
+      "taken": false
+    },
+    {
+      "team": "Georgia So",
+      "rating": "-11.6",
+      "wins": "5.1",
+      "losses": "6.9",
+      "confWins": "3.6",
+      "confLosses": "4.4",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "Kentucky",
+      "rating": "8.5",
+      "wins": "5.0",
+      "losses": "7.0",
+      "confWins": "2.7",
+      "confLosses": "6.3",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Rutgers",
+      "rating": "0.7",
+      "wins": "5.0",
+      "losses": "7.0",
+      "confWins": "2.5",
+      "confLosses": "6.5",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Iowa St",
+      "rating": "-0.7",
+      "wins": "5.0",
+      "losses": "7.0",
+      "confWins": "3.0",
+      "confLosses": "6.0",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Coastal Car",
+      "rating": "-14.3",
+      "wins": "5.0",
+      "losses": "7.0",
+      "confWins": "3.2",
+      "confLosses": "4.8",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Bowling Green",
+      "rating": "-18.0",
+      "wins": "5.0",
+      "losses": "7.0",
+      "confWins": "3.8",
+      "confLosses": "4.2",
+      "winConf": "4%",
+      "taken": false
+    },
+    {
+      "team": "Mississippi St",
+      "rating": "7.0",
+      "wins": "4.8",
+      "losses": "7.2",
+      "confWins": "2.5",
+      "confLosses": "6.5",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "North Carolina",
+      "rating": "1.5",
+      "wins": "4.8",
+      "losses": "7.2",
+      "confWins": "2.7",
+      "confLosses": "5.3",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "San Jose St",
+      "rating": "-16.0",
+      "wins": "4.7",
+      "losses": "8.3",
+      "confWins": "3.4",
+      "confLosses": "5.6",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Akron",
+      "rating": "-17.9",
+      "wins": "4.7",
+      "losses": "7.3",
+      "confWins": "3.6",
+      "confLosses": "4.4",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Syracuse",
+      "rating": "-0.6",
+      "wins": "4.6",
+      "losses": "7.4",
+      "confWins": "2.9",
+      "confLosses": "6.1",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Sacramento State",
+      "rating": "-20.2",
+      "wins": "4.6",
+      "losses": "7.4",
+      "confWins": "3.4",
+      "confLosses": "4.6",
+      "winConf": "3%",
+      "taken": false
+    },
+    {
+      "team": "New Mexico St",
+      "rating": "-18.9",
+      "wins": "4.5",
+      "losses": "7.5",
+      "confWins": "3.3",
+      "confLosses": "4.7",
+      "winConf": "5%",
+      "taken": false
+    },
+    {
+      "team": "Oregon St",
+      "rating": "-7.9",
+      "wins": "4.4",
+      "losses": "7.6",
+      "confWins": "2.4",
+      "confLosses": "4.6",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Colorado St",
+      "rating": "-8.5",
+      "wins": "4.4",
+      "losses": "7.6",
+      "confWins": "2.1",
+      "confLosses": "4.9",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Nevada",
+      "rating": "-17.3",
+      "wins": "4.4",
+      "losses": "7.6",
+      "confWins": "2.7",
+      "confLosses": "5.3",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Colorado",
+      "rating": "-0.8",
+      "wins": "4.3",
+      "losses": "7.7",
+      "confWins": "2.7",
+      "confLosses": "6.3",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Arkansas",
+      "rating": "4.6",
+      "wins": "4.1",
+      "losses": "7.9",
+      "confWins": "2.1",
+      "confLosses": "6.9",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Michigan St",
+      "rating": "0.0",
+      "wins": "4.1",
+      "losses": "7.9",
+      "confWins": "2.5",
+      "confLosses": "6.5",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Middle Tenn",
+      "rating": "-21.3",
+      "wins": "4.1",
+      "losses": "7.9",
+      "confWins": "2.8",
+      "confLosses": "5.2",
+      "winConf": "3%",
+      "taken": false
+    },
+    {
+      "team": "Georgia St",
+      "rating": "-19.2",
+      "wins": "4.0",
+      "losses": "8.0",
+      "confWins": "2.3",
+      "confLosses": "5.7",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Missouri St",
+      "rating": "-19.9",
+      "wins": "4.0",
+      "losses": "8.0",
+      "confWins": "3.0",
+      "confLosses": "5.0",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Stanford",
+      "rating": "-3.2",
+      "wins": "3.9",
+      "losses": "8.1",
+      "confWins": "2.2",
+      "confLosses": "6.8",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "UAB",
+      "rating": "-18.2",
+      "wins": "3.8",
+      "losses": "8.2",
+      "confWins": "2.1",
+      "confLosses": "5.9",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Southern Miss",
+      "rating": "-18.8",
+      "wins": "3.8",
+      "losses": "8.2",
+      "confWins": "2.5",
+      "confLosses": "5.5",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "UL Monroe",
+      "rating": "-20.7",
+      "wins": "3.8",
+      "losses": "8.2",
+      "confWins": "2.4",
+      "confLosses": "5.6",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Ball St",
+      "rating": "-23.3",
+      "wins": "3.8",
+      "losses": "8.2",
+      "confWins": "3.0",
+      "confLosses": "5.0",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Rice",
+      "rating": "-15.0",
+      "wins": "3.7",
+      "losses": "8.3",
+      "confWins": "2.4",
+      "confLosses": "5.6",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "N Illinois",
+      "rating": "-20.4",
+      "wins": "3.6",
+      "losses": "8.4",
+      "confWins": "2.4",
+      "confLosses": "5.6",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "Kent St",
+      "rating": "-22.2",
+      "wins": "3.6",
+      "losses": "8.4",
+      "confWins": "2.9",
+      "confLosses": "5.1",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Boston College",
+      "rating": "-5.4",
+      "wins": "3.5",
+      "losses": "8.5",
+      "confWins": "1.8",
+      "confLosses": "6.2",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Purdue",
+      "rating": "-2.3",
+      "wins": "3.4",
+      "losses": "8.6",
+      "confWins": "2.0",
+      "confLosses": "7.0",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "UTEP",
+      "rating": "-20.5",
+      "wins": "3.4",
+      "losses": "8.6",
+      "confWins": "2.4",
+      "confLosses": "5.6",
+      "winConf": "1%",
+      "taken": false
+    },
+    {
+      "team": "UMass",
+      "rating": "-27.4",
+      "wins": "3.4",
+      "losses": "8.6",
+      "confWins": "2.1",
+      "confLosses": "5.9",
+      "winConf": "0%",
+      "taken": false
+    },
+    {
+      "team": "Sam Houston",
+      "rating": "-24.6",
+      "wins": "3.3",
+      "losses": "8.7",
+      "confWins": "2.3",
+      "confLosses": "5.7",
+      "winConf": "2%",
+      "taken": false
+    },
+    {
+      "team": "Charlotte",
+      "rating": "-23.5",
+      "wins": "2.5",
+      "losses": "9.5",
+      "confWins": "1.4",
+      "confLosses": "6.6",
+      "winConf": "0%",
+      "taken": false
+    }
+  ]
+}

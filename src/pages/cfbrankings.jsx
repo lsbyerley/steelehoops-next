@@ -1,25 +1,48 @@
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/src/components/ui/table';
 import { clsx } from 'clsx';
+import { useMemo, useState } from 'react';
+
+const SORT_KEYS = {
+  wins: 'wins',
+  rating: 'rating',
+  confWins: 'confWins',
+};
+
+const parseSortValue = (value) => {
+  const num = parseFloat(value);
+  return Number.isNaN(num) ? -Infinity : num;
+};
+
+const sortTeams = (teams, sortKey, sortDir) => {
+  return [...teams].sort((a, b) => {
+    const aVal = parseSortValue(a[sortKey]);
+    const bVal = parseSortValue(b[sortKey]);
+    if (aVal < bVal) {
+      return sortDir === 'asc' ? -1 : 1;
+    }
+    if (aVal > bVal) {
+      return sortDir === 'asc' ? 1 : -1;
+    }
+    return 0;
+  });
+};
 
 export const getServerSideProps = async (ctx) => {
   let teams;
   try {
-    teams = await import(`../data/teamrankings.json`);
+    teams = await import(`../data/teampredictions.json`);
   } catch (err) {
     console.error('LOG: error importing teams json file');
   }
 
   const sorted = teams?.rankings;
-  /* const sorted = teams?.rankings.sort((a, b) => {
-    let aRating = parseFloat(a.rating);
-    let bRating = parseFloat(b.rating);
-    if (aRating < bRating) {
-      return 1;
-    } else if (aRating > bRating) {
-      return -1;
-    }
-    // a must be equal to b
-    return 0;
-  }); */
 
   return {
     props: {
@@ -28,40 +51,100 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const CFBRankings = ({ teams }) => {
+const SortableHeader = ({ label, column, sortKey, sortDir, onSort }) => {
+  const isActive = sortKey === column;
+
   return (
-    <div className="mx-auto max-w-5xl overflow-x-auto">
-      <table className="table-sm table">
-        <thead>
-          <tr>
-            <th>Rk</th>
-            <th>Wins</th>
-            <th>Team</th>
-            <th>Rating</th>
-            <th>Conf Wins</th>
-            <th>WinConf%</th>
-            <th>Losses</th>
-          </tr>
-        </thead>
-        <tbody>
-          {teams.map((t, index) => {
+    <TableHead aria-sort={isActive ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}>
+      <button
+        type="button"
+        onClick={() => onSort(column)}
+        className={clsx(
+          'inline-flex cursor-pointer items-center gap-1',
+          isActive ? 'text-foreground font-semibold' : 'hover:text-foreground/80'
+        )}
+      >
+        {label}
+        {isActive && <span aria-hidden="true">{sortDir === 'desc' ? '↓' : '↑'}</span>}
+      </button>
+    </TableHead>
+  );
+};
+
+const CFBRankings = ({ teams }) => {
+  const [sortKey, setSortKey] = useState(SORT_KEYS.wins);
+  const [sortDir, setSortDir] = useState('desc');
+
+  const sortedTeams = useMemo(
+    () => sortTeams(teams, sortKey, sortDir),
+    [teams, sortKey, sortDir]
+  );
+
+  const handleSort = (column) => {
+    if (sortKey === column) {
+      setSortDir((dir) => (dir === 'desc' ? 'asc' : 'desc'));
+      return;
+    }
+
+    setSortKey(column);
+    setSortDir('desc');
+  };
+
+  return (
+    <div className="mx-auto max-w-5xl">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-12">Rk</TableHead>
+            <SortableHeader
+              label="Wins"
+              column={SORT_KEYS.wins}
+              sortKey={sortKey}
+              sortDir={sortDir}
+              onSort={handleSort}
+            />
+            <TableHead>Team</TableHead>
+            <SortableHeader
+              label="Rating"
+              column={SORT_KEYS.rating}
+              sortKey={sortKey}
+              sortDir={sortDir}
+              onSort={handleSort}
+            />
+            <SortableHeader
+              label="Conf Wins"
+              column={SORT_KEYS.confWins}
+              sortKey={sortKey}
+              sortDir={sortDir}
+              onSort={handleSort}
+            />
+            <TableHead>WinConf%</TableHead>
+            <TableHead>Losses</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {sortedTeams.map((t, index) => {
             return (
-              <tr
+              <TableRow
                 key={t.team}
-                className={clsx(t.taken ? 'bg-base-300' : '', t.myTeam ? 'text-red-600' : '')}
+                className={clsx(
+                  t.taken &&
+                    '[&>td]:bg-zinc-200 dark:[&>td]:bg-zinc-800 hover:[&>td]:bg-zinc-200 dark:hover:[&>td]:bg-zinc-800',
+                  t.myTeam && 'text-red-600'
+                )}
               >
-                <th>{index + 1}</th>
-                <th>{t.wins}</th>
-                <td>{t.team}</td>
-                <td>{t.rating}</td>
-                <td>{t.confWins}</td>
-                <td>{t.winConf}</td>
-                <td>{t.losses}</td>
-              </tr>
+                <TableCell className="font-medium">{index + 1}</TableCell>
+                <TableCell className="font-medium">{t.wins}</TableCell>
+                <TableCell>{t.team}</TableCell>
+                <TableCell>{t.rating}</TableCell>
+                <TableCell>{t.confWins}</TableCell>
+                <TableCell>{t.winConf}</TableCell>
+                <TableCell>{t.losses}</TableCell>
+              </TableRow>
             );
           })}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };
