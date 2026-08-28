@@ -261,7 +261,7 @@
       "confWins": "5.4",
       "confLosses": "3.6",
       "winConf": "5%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Washington",
