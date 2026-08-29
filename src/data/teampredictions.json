@@ -191,7 +191,7 @@
       "confWins": "5.3",
       "confLosses": "3.7",
       "winConf": "5%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Mississippi",
@@ -201,7 +201,7 @@
       "confWins": "5.3",
       "confLosses": "3.7",
       "winConf": "8%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Kansas St",
@@ -211,7 +211,7 @@
       "confWins": "5.4",
       "confLosses": "3.6",
       "winConf": "6%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "UNLV",
@@ -271,7 +271,7 @@
       "confWins": "5.1",
       "confLosses": "3.9",
       "winConf": "3%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Louisville",
@@ -281,7 +281,7 @@
       "confWins": "6.1",
       "confLosses": "2.9",
       "winConf": "10%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Houston",
@@ -291,7 +291,7 @@
       "confWins": "5.2",
       "confLosses": "3.8",
       "winConf": "6%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Oklahoma",
@@ -311,7 +311,7 @@
       "confWins": "5.7",
       "confLosses": "2.3",
       "winConf": "21%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Pittsburgh",
@@ -351,7 +351,7 @@
       "confWins": "4.9",
       "confLosses": "3.1",
       "winConf": "6%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Army",
@@ -381,7 +381,7 @@
       "confWins": "4.8",
       "confLosses": "4.2",
       "winConf": "4%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "UTSA",
