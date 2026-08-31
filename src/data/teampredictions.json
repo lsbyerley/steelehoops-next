@@ -341,7 +341,7 @@
       "confWins": "4.8",
       "confLosses": "4.2",
       "winConf": "2%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Clemson",
@@ -401,7 +401,7 @@
       "confWins": "4.2",
       "confLosses": "2.8",
       "winConf": "18%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Old Dominion",
