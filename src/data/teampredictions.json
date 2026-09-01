@@ -663,7 +663,8 @@
       "confWins": "4.5",
       "confLosses": "4.5",
       "winConf": "1%",
-      "taken": false
+      "taken": true,
+      "myTeam": true
     },
     {
       "team": "South Carolina",
