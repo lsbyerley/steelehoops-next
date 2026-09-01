@@ -542,7 +542,8 @@
       "confWins": "4.3",
       "confLosses": "4.7",
       "winConf": "4%",
-      "taken": false
+      "taken": true,
+      "myTeam": true
     },
     {
       "team": "Illinois",
