@@ -432,7 +432,7 @@
       "confWins": "3.9",
       "confLosses": "3.1",
       "winConf": "14%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Memphis",
@@ -472,7 +472,7 @@
       "confWins": "4.7",
       "confLosses": "3.3",
       "winConf": "8%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Miami OH",
@@ -583,7 +583,7 @@
       "confWins": "4.7",
       "confLosses": "3.3",
       "winConf": "10%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "W Kentucky",
@@ -603,7 +603,7 @@
       "confWins": "3.8",
       "confLosses": "3.2",
       "winConf": "12%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "W Michigan",
@@ -653,7 +653,7 @@
       "confWins": "4.5",
       "confLosses": "4.5",
       "winConf": "3%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Wisconsin",
@@ -724,7 +724,7 @@
       "confWins": "4.1",
       "confLosses": "3.9",
       "winConf": "2%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Kennesaw St",
@@ -734,7 +734,7 @@
       "confWins": "4.2",
       "confLosses": "3.8",
       "winConf": "12%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Florida Intl",
@@ -774,7 +774,7 @@
       "confWins": "4.0",
       "confLosses": "4.0",
       "winConf": "5%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Arkansas St",
@@ -784,7 +784,7 @@
       "confWins": "4.4",
       "confLosses": "3.6",
       "winConf": "6%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "C Michigan",
@@ -794,7 +794,7 @@
       "confWins": "4.5",
       "confLosses": "3.5",
       "winConf": "10%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Kansas",
@@ -864,7 +864,7 @@
       "confWins": "3.3",
       "confLosses": "5.7",
       "winConf": "1%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Florida St",
@@ -914,7 +914,7 @@
       "confWins": "3.9",
       "confLosses": "5.1",
       "winConf": "1%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Wyoming",
@@ -934,7 +934,7 @@
       "confWins": "3.8",
       "confLosses": "4.2",
       "winConf": "5%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "N Texas",
@@ -994,7 +994,7 @@
       "confWins": "--",
       "confLosses": "--",
       "winConf": "--",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Maryland",
