@@ -694,7 +694,8 @@
       "confWins": "3.4",
       "confLosses": "5.6",
       "winConf": "0%",
-      "taken": false
+      "taken": true,
+      "myTeam": true
     },
     {
       "team": "UCLA",
