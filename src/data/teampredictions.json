@@ -835,7 +835,7 @@
       "confWins": "4.5",
       "confLosses": "3.5",
       "winConf": "8%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Delaware",
