@@ -905,7 +905,7 @@
       "confWins": "3.4",
       "confLosses": "5.6",
       "winConf": "1%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Duke",
@@ -925,7 +925,7 @@
       "confWins": "3.5",
       "confLosses": "4.5",
       "winConf": "4%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Buffalo",
@@ -1035,7 +1035,7 @@
       "confWins": "3.6",
       "confLosses": "4.4",
       "winConf": "4%",
-      "taken": false
+      "taken": true
     },
     {
       "team": "Kentucky",
