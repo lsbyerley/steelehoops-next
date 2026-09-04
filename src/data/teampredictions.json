@@ -705,7 +705,8 @@
       "confWins": "4.1",
       "confLosses": "4.9",
       "winConf": "0%",
-      "taken": true
+      "taken": true,
+      "myTeam": true
     },
     {
       "team": "Oklahoma St",
